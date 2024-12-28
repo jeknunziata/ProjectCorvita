@@ -14,6 +14,7 @@ public class MainPageController {
     private Scene scene;
     private Parent root;
 
+    //Metodi necessari allo switch tra le pagine iniziali
     public void switchLogin(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/MainPage/LoginScreen.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -21,7 +22,6 @@ public class MainPageController {
         stage.setScene(scene);
         stage.show();
     }
-
     public void switchMain(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/MainPage/MainPage.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -30,7 +30,6 @@ public class MainPageController {
         stage.show();
 
     }
-
     public void switchAcquisto(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/MainPage/AcquistoLicenza.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
