@@ -10,7 +10,10 @@ module Frontend {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens Frontend to javafx.fxml;
     exports Frontend;
+    exports Backend;
+    opens Backend to javafx.fxml;
 }
