@@ -38,4 +38,12 @@ public class MainPageController {
         stage.show();
     }
 
+    public void switchVisualizzaChiaveLicenza(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/MainPage/VisualizzaChiaveLicenza.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
