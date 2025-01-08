@@ -31,10 +31,10 @@ public class MainPageController {
 
     //Metodi necessari allo switch tra le pagine iniziali
     public void switchLogin(ActionEvent event) throws IOException {
-        switchScene(event, "/MainPage/LoginScreen.fxml");
+        switchScene(event, "/Scene/LoginScreen.fxml");
     }
     public void switchAcquisto(ActionEvent event) throws IOException {
-        switchScene(event, "/MainPage/AcquistoLicenza.fxml");
+        switchScene(event, "/Scene/AcquistoLicenza.fxml");
     }
 
 

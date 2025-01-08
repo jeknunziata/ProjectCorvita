@@ -5,8 +5,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -14,12 +15,12 @@ public class MainPage extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        //JDBC bd=new JDBC();
-        //bd.connect();
+        JDBC bd=new JDBC();
+        bd.connect();
         //TEMP** possibile instanziamento di un nuovo stage: Stage stageIniziale = new Stage();
 
         //creazione del root contenente i dati della schermata iniziale e applicazione di questi alla scena
-        Parent root = FXMLLoader.load(getClass().getResource("/MainPage/MainPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Scene/MainPage.fxml"));
         Scene scenaIniziale = new Scene(root, Color.web("#E8F6F3"));
 
 
@@ -43,10 +44,28 @@ public class MainPage extends Application {
         stage.setScene(scenaIniziale);
         stage.show();
 
-        //bd.disconnect();
+        stage.setOnCloseRequest(event -> {
+            event.consume();
+            logout(stage);});
+
+        bd.disconnect();
     }
 
     public static void main(String[] args) {launch(args);}
 
+    public void logout(Stage stage) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Logout");
+        alert.setHeaderText("Stai per uscire");
+        alert.setContentText("Sei sicuro di voler uscire?");
+
+        if(alert.showAndWait().get() == ButtonType.OK) {
+            System.out.println("Logout called");
+            stage.close();
+        }
+
+
+    }
 
 }
