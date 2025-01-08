@@ -11,7 +11,9 @@ import javafx.stage.Stage;
 public class HomePageController {
 
     private Stage stage;
-    private AnchorPane topPane;
+
+    @FXML
+    AnchorPane topPane;
 
     @FXML
     Label nomeUtenteLabel;
