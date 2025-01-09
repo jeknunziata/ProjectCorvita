@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -15,8 +16,8 @@ public class MainPage extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        JDBC bd=new JDBC();
-        bd.connect();
+        //JDBC bd=new JDBC();
+        //bd.connect();
         //TEMP** possibile instanziamento di un nuovo stage: Stage stageIniziale = new Stage();
 
         //creazione del root contenente i dati della schermata iniziale e applicazione di questi alla scena
@@ -48,11 +49,10 @@ public class MainPage extends Application {
             event.consume();
             logout(stage);});
 
-        bd.disconnect();
+        //bd.disconnect();
     }
 
     public static void main(String[] args) {launch(args);}
-
     public void logout(Stage stage) {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -67,5 +67,6 @@ public class MainPage extends Application {
 
 
     }
+
 
 }

@@ -26,6 +26,7 @@ public class LoginController {
         Screen screen = Screen.getPrimary();
         double screenWidth = screen.getVisualBounds().getWidth();
         double screenHeight = screen.getVisualBounds().getHeight();
+        System.out.println(screenWidth);
 
         root = FXMLLoader.load(getClass().getResource(fxmlPath));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -41,10 +42,9 @@ public class LoginController {
         switchScene(event, "/Scene/MainPage.fxml");
     }
 
-    //metodo per la conferma dell'uscita tramite l'apposito bottone
     public void Login(ActionEvent event) throws IOException {
 
-        String username = CodiceLogin.getText();
+        /*String username = CodiceLogin.getText();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
         root = loader.load();
@@ -55,7 +55,8 @@ public class LoginController {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.show();
+        stage.show();*/
+        switchScene(event, "/Scene/HomePage.fxml");
 
 
     }

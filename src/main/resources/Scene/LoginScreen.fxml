@@ -11,4 +11,3 @@
       <PasswordField fx:id="CodiceLogin" layoutX="185.0" layoutY="153.0" promptText="Inserire il proprio codice" />
    </children>
 </AnchorPane>
-
