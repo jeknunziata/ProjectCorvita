@@ -1,0 +1,38 @@
+.background-pane {
+    -fx-background-color: #bfbcbc;
+}
+
+#CorVitaLabel {
+    -fx-font-family: "Verdana";
+    -fx-font-weight: bold;
+    -fx-font-size: 190px;
+    -fx-text-fill: radial-gradient(center 50% 100%, radius 64.67889820763824%, #0b394f, #7fdad4 74.4279946164199%, #0b394f);
+    -fx-text-alignment: center;
+    -fx-text-overrun: clip;
+    -fx-alignment: center;
+}
+
+.center-hbox {
+    -fx-alignment: center;
+}
+
+.login-button {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 24px;
+    -fx-text-fill: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 53.9823% 50.7576%, radius 92.2018%, #0b3954 0.0%, #7fdbd4 64.428%, #0b3954 100.0%);
+    -fx-padding: 10px 20px 10px 20px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-text-overrun: clip;
+}
+
+.license-button {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 24px;
+    -fx-text-fill:  radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 53.9823% 50.7576%, radius 92.2018%, #017a79 0.0%, #017a79 0.6729%, #ffc857 0.6729%, #898989 100.0%);
+    -fx-padding: 10px;
+    -fx-border-radius: 50%;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-text-overrun: clip;
+}
