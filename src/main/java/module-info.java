@@ -17,4 +17,6 @@ module Frontend {
     exports Frontend;
     exports Backend;
     opens Backend to javafx.fxml;
+    exports Utils;
+    opens Utils to javafx.fxml;
 }

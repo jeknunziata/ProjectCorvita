@@ -27,6 +27,7 @@ public class LoginController {
         double screenWidth = screen.getVisualBounds().getWidth();
         double screenHeight = screen.getVisualBounds().getHeight();
         System.out.println(screenWidth);
+        System.out.println(screenHeight);
 
         root = FXMLLoader.load(getClass().getResource(fxmlPath));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

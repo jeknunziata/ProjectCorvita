@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.AcquistoLicenzaController">
     <children>
-        <Button layoutX="101.0" layoutY="360.0" mnemonicParsing="false" text="Torna indietro" />
+        <Button layoutX="101.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchMainPage" text="Torna indietro" />
       <Text layoutX="9.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserire i dati per comprare la chiave di licenza:" wrappingWidth="581.6000976562499">
          <font>
             <Font size="28.0" />
@@ -36,6 +36,6 @@
       <TextField fx:id="textFieldDataScadenza" layoutX="300.0" layoutY="273.0" promptText="Inserisci data scadenza" />
       <Text layoutX="14.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice CVV/CVC:" wrappingWidth="265.4906005859375" />
       <TextField fx:id="textFieldCVV" layoutX="300.0" layoutY="306.0" promptText="Inserisci CVV/CVC" />
-      <Button fx:id="compraButton" layoutX="345.0" layoutY="360.0" mnemonicParsing="false" text="Compra(100 $)" />
+      <Button fx:id="compraButton" layoutX="345.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchVisualizzaChiaveLicenza" text="Compra(100 $)" />
     </children>
 </AnchorPane>

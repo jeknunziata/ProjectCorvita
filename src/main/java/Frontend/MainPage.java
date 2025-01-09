@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class MainPage extends Application {
+    JDBC bd;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -62,6 +63,7 @@ public class MainPage extends Application {
 
         if(alert.showAndWait().get() == ButtonType.OK) {
             System.out.println("Logout called");
+            //bd.disconnect();
             stage.close();
         }
 

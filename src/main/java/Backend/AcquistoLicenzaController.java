@@ -179,7 +179,7 @@ public class AcquistoLicenzaController {
 
         } catch (Exception e) {
             System.out.println("Errore durante la verifica: " + e.getMessage());
-}
+        }
     }
 
     //il metodo "verificaTipo" controlla tramite uno switch il tipo che campi inseriti (possono essere String o Date)
