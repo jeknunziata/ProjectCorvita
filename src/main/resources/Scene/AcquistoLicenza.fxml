@@ -5,30 +5,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.MainPageController">
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.AcquistoLicenzaController">
     <children>
-        <Button layoutX="101.0" layoutY="360.0" mnemonicParsing="false"  text="Torna indietro" />
+        <Button layoutX="101.0" layoutY="360.0" mnemonicParsing="false" text="Torna indietro" />
       <Text layoutX="9.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserire i dati per comprare la chiave di licenza:" wrappingWidth="581.6000976562499">
          <font>
             <Font size="28.0" />
          </font>
       </Text>
       <Text layoutX="14.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CF:" wrappingWidth="265.4906005859375" />
-      <TextField layoutX="300.0" layoutY="60.0" />
+      <TextField fx:id="textFieldCF" layoutX="300.0" layoutY="60.0" promptText="Inserisci CF" />
       <Text layoutX="14.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" wrappingWidth="265.4906005859375" />
-      <TextField layoutX="300.0" layoutY="95.0" />
+      <TextField fx:id="textFieldNome" layoutX="300.0" layoutY="95.0" promptText="Inserisci il nome" />
       <Text layoutX="14.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome" wrappingWidth="265.4906005859375" />
-      <TextField layoutX="300.0" layoutY="129.0" />
+      <TextField fx:id="textFieldCognome" layoutX="300.0" layoutY="129.0" promptText="Inserisci il cognome" />
       <Text layoutX="14.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero della carta:" wrappingWidth="265.4906005859375" />
-      <TextField layoutX="300.0" layoutY="167.0" />
+      <TextField fx:id="textFieldNumeroCarta" layoutX="300.0" layoutY="167.0" prefHeight="26.0" prefWidth="150.0" promptText="Inserisci il numero di carta">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
       <Text layoutX="14.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome del titolare della carta:" wrappingWidth="265.4906005859375" />
-      <TextField layoutX="300.0" layoutY="200.0" />
+      <TextField fx:id="textFieldNomeTitolare" layoutX="300.0" layoutY="200.0" promptText="Inserisci il nome titolare " />
       <Text layoutX="14.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome del titolare della carta:" wrappingWidth="265.4906005859375" />
-      <TextField layoutX="300.0" layoutY="236.0" />
+      <TextField fx:id="textFieldCognomeTitolare" layoutX="299.0" layoutY="235.0" prefHeight="26.0" prefWidth="150.0" promptText="Inserisci il cognome titolare ">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
       <Text layoutX="14.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data di scadenza:" wrappingWidth="265.4906005859375" />
-      <TextField layoutX="300.0" layoutY="273.0" />
+      <TextField fx:id="textFieldDataScadenza" layoutX="300.0" layoutY="273.0" promptText="Inserisci data scadenza" />
       <Text layoutX="14.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice CVV/CVC:" wrappingWidth="265.4906005859375" />
-      <TextField layoutX="300.0" layoutY="306.0" />
-      <Button layoutX="345.0" layoutY="360.0" mnemonicParsing="false" text="Compra(100 $)" />
+      <TextField fx:id="textFieldCVV" layoutX="300.0" layoutY="306.0" promptText="Inserisci CVV/CVC" />
+      <Button fx:id="compraButton" layoutX="345.0" layoutY="360.0" mnemonicParsing="false" text="Compra(100 $)" />
     </children>
 </AnchorPane>

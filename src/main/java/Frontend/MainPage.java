@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -53,6 +52,7 @@ public class MainPage extends Application {
     }
 
     public static void main(String[] args) {launch(args);}
+
     public void logout(Stage stage) {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -67,6 +67,5 @@ public class MainPage extends Application {
 
 
     }
-
 
 }
