@@ -1,0 +1,10 @@
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.GridPane?>
+<ScrollPane fx:id="scrollContainer" fitToWidth="true" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="Backend.SintomiEMalattieController">
+    <content>
+        <GridPane fx:id="sintomiGrid" hgap="10" vgap="10" alignment="CENTER">
+            <!-- Le checkbox verranno aggiunte dinamicamente qui -->
+        </GridPane>
+    </content>
+</ScrollPane>

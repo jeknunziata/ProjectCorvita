@@ -16,8 +16,8 @@ public class MainPage extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        //JDBC bd=new JDBC();
-        //bd.connect();
+        JDBC bd=new JDBC();
+        bd.connect();
         //TEMP** possibile instanziamento di un nuovo stage: Stage stageIniziale = new Stage();
 
         //creazione del root contenente i dati della schermata iniziale e applicazione di questi alla scena
@@ -49,7 +49,6 @@ public class MainPage extends Application {
             event.consume();
             logout(stage);});
 
-        //bd.disconnect();
     }
 
     public static void main(String[] args) {launch(args);}
@@ -63,7 +62,7 @@ public class MainPage extends Application {
 
         if(alert.showAndWait().get() == ButtonType.OK) {
             System.out.println("Logout called");
-            //bd.disconnect();
+            bd.disconnect();
             stage.close();
         }
 

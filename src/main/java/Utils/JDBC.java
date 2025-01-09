@@ -37,4 +37,19 @@ public class JDBC {
 
     }
 
+    public static Connection getConnection() {
+        return connection;
     }
+
+    public static String getDbPassword() {
+        return DB_PASSWORD;
+    }
+
+    public static String getDbUrl() {
+        return DB_URL;
+    }
+
+    public static String getDbUser() {
+        return DB_USER;
+    }
+}

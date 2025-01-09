@@ -6,6 +6,7 @@ public class Utente {
     String cognome;
     String CF;
     int chiaveLicenza;
+    String tipo;
 
     public int getChiaveLicenza() {
         return chiaveLicenza;
@@ -23,6 +24,10 @@ public class Utente {
         return nome;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
     public void setCF(String CF) {
         this.CF = CF;
     }
@@ -37,5 +42,9 @@ public class Utente {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

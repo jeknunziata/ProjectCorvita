@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.CreaCartellaClinicaController">
+   <children>
+      <VBox layoutX="177.0" layoutY="23.0" prefHeight="193.0" prefWidth="491.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" wrappingWidth="75.28580474853516">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <TextField promptText="Nome">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome" wrappingWidth="160.6191177368164">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <TextField promptText="Cognome">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CF" wrappingWidth="75.28580474853516">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <TextField promptText="CF">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="867.0" layoutY="28.0" prefHeight="193.0" prefWidth="491.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Letto" wrappingWidth="75.28580474853516">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <TextField promptText="Letto">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" wrappingWidth="160.6191177368164">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <TextField promptText="Telefono">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CF Medico Curante" wrappingWidth="318.48575592041016">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <TextField promptText="CF Medico Curante">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+      <TextArea layoutX="163.0" layoutY="430.0" prefHeight="220.0" prefWidth="1207.0" promptText="Note...">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextArea>
+      <Text layoutX="151.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="1359.0" layoutY="718.0" mnemonicParsing="false" onAction="#switchSintomiEMalattie" text="Avanti">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="95.0" layoutY="722.0" mnemonicParsing="false" onAction="#switchHomePage" text="Indietro">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
