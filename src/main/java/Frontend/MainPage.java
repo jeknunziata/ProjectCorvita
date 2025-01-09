@@ -26,9 +26,9 @@ public class MainPage extends Application {
 
 
 
-        //aggiunta della pagina CSS alla scena
-        String cssMainPage = this.getClass().getResource("/MainPage.css").toExternalForm();
-        scenaIniziale.getStylesheets().add(cssMainPage);
+        /* TEMP-(se avremo una pagina comune a tutti) aggiunta della pagina CSS alla scena
+        String cssMainPage = this.getClass().getResource("/pagina.css").toExternalForm();
+        scenaIniziale.getStylesheets().add(cssMainPage);*/
 
         //Aggiunta dell'icona e del titolo alla finestra
         Image icona = new Image("logoCorVita.jpeg");

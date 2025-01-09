@@ -1,0 +1,7 @@
+.header-pane {
+    -fx-background-color: #7fdbd4;
+}
+
+.content-pane {
+    -fx-padding: 30px;
+}
