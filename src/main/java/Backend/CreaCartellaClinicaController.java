@@ -1,6 +1,6 @@
 package Backend;
 
-import Utils.Sintomi;
+import Utils.Sintomo;
 import Utils.SintomiDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +36,7 @@ public class CreaCartellaClinicaController {
     //Metodi necessari allo switch tra le pagine iniziali
     public void switchSintomiEMalattie(ActionEvent event) throws IOException, SQLException {
         SintomiDao sintomiDao = new SintomiDao();
-        List<Sintomi> sintomiList=sintomiDao.getSintomi();
+        List<Sintomo> sintomoList =sintomiDao.getSintomi();
         Screen screen = Screen.getPrimary();
         double screenWidth = screen.getVisualBounds().getWidth();
         double screenHeight = screen.getVisualBounds().getHeight();
@@ -46,7 +46,7 @@ public class CreaCartellaClinicaController {
         SintomiEMalattieController controller = loader.getController();
 
         // Passa la lista dei sintomi al controller per caricare le checkbox
-        controller.loadSintomiCheckboxes(sintomiList);
+        controller.loadSintomiCheckboxes(sintomoList);
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root, screenWidth, screenHeight);

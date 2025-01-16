@@ -1,6 +1,6 @@
 package Utils;
 
-public class Malattie {
+public class Malattia {
     String nome;
     String nome_scientifico;
 

@@ -1,6 +1,6 @@
 package Utils;
 
-public class Sintomi {
+public class Sintomo {
     String nome;
 
     public String getNome() {

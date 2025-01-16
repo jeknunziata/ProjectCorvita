@@ -1,10 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.GridPane?>
-<ScrollPane fx:id="scrollContainer" fitToWidth="true" xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml" fx:controller="Backend.SintomiEMalattieController">
-    <content>
-        <GridPane fx:id="sintomiGrid" hgap="10" vgap="10" alignment="CENTER">
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="816.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.SintomiEMalattieController">
+   <children>
+      <StackPane layoutX="373.0" layoutY="66.0" prefHeight="389.0" prefWidth="835.0">
+         <children>
+            <ScrollPane fx:id="scrollContainer" fitToWidth="true" prefHeight="407.0" prefWidth="835.0">
+                <content>
+                    <GridPane fx:id="sintomiGrid" alignment="CENTER" hgap="10" vgap="10">
             <!-- Le checkbox verranno aggiunte dinamicamente qui -->
         </GridPane>
-    </content>
-</ScrollPane>
+                </content>
+            </ScrollPane>
+         </children>
+      </StackPane>
+      <Button layoutX="730.0" layoutY="481.0" mnemonicParsing="false" onAction="#getMalattie" text="Malattie">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <StackPane fx:id="malattieStack" layoutX="490.0" layoutY="583.0" prefHeight="150.0" prefWidth="602.0" />
+      <Text layoutX="502.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sintomi">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="1394.0" layoutY="697.0" mnemonicParsing="false" text="Conferma">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="8.0" layoutY="699.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" text="Indietro">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
