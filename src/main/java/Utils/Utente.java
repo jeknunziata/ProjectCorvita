@@ -6,7 +6,15 @@ public class Utente {
     String cognome;
     String CF;
     int chiaveLicenza;
-    String tipo;
+    String professione;
+
+    public Utente(int chiaveLicenza, String CF,String nome, String cognome, String professione) {
+        this.chiaveLicenza = chiaveLicenza;
+        this.CF = CF;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.professione = professione;
+    }
 
     public int getChiaveLicenza() {
         return chiaveLicenza;
@@ -24,8 +32,8 @@ public class Utente {
         return nome;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getProfessione() {
+        return professione;
     }
 
     public void setCF(String CF) {
@@ -44,7 +52,7 @@ public class Utente {
         this.nome = nome;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setProfessione(String professione) {
+        this.professione = professione;
     }
 }

@@ -12,8 +12,8 @@
             <Font size="33.0" />
          </font>
       </Text>
-      <Text layoutX="5.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ecco la tua chiave di licenza:  X" textAlignment="CENTER" wrappingWidth="572.5367431640625" />
-      <Button layoutX="257.0" layoutY="337.0" mnemonicParsing="false" onAction="#switchLogin" text="Torna indietro" />
+      <Text fx:id="textChiave" layoutX="5.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ecco la tua chiave di licenza:  X" textAlignment="CENTER" wrappingWidth="572.5367431640625" />
+      <Button layoutX="257.0" layoutY="337.0" mnemonicParsing="false" onAction="#switchLogin" text="Vai a login" />
       <Text layoutX="5.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE: salva la chiave licenza per effettuare il login" textAlignment="CENTER" wrappingWidth="557.336669921875" />
    </children>
 </AnchorPane>

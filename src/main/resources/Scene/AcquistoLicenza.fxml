@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.AcquistoLicenzaController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="471.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.AcquistoLicenzaController">
     <children>
-        <Button layoutX="101.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchMainPage" text="Torna indietro" />
+        <Button layoutX="101.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchMainPage" text="Torna indietro" />
       <Text layoutX="9.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserire i dati per comprare la chiave di licenza:" wrappingWidth="581.6000976562499">
          <font>
             <Font size="28.0" />
@@ -33,9 +34,12 @@
             <Font size="10.0" />
          </font></TextField>
       <Text layoutX="14.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data di scadenza:" wrappingWidth="265.4906005859375" />
-      <TextField fx:id="textFieldDataScadenza" layoutX="300.0" layoutY="273.0" promptText="Inserisci data scadenza" />
+      <TextField fx:id="textFieldMese" layoutX="300.0" layoutY="272.0" prefHeight="26.0" prefWidth="38.0" promptText="MM" />
       <Text layoutX="14.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice CVV/CVC:" wrappingWidth="265.4906005859375" />
       <TextField fx:id="textFieldCVV" layoutX="300.0" layoutY="306.0" promptText="Inserisci CVV/CVC" />
-      <Button fx:id="compraButton" layoutX="345.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchVisualizzaChiaveLicenza" text="Compra(100 $)" />
+      <Button fx:id="compraButton" layoutX="345.0" layoutY="420.0" mnemonicParsing="false" text="Compra(100 $)" />
+      <TextField fx:id="textFieldAnno" layoutX="345.0" layoutY="272.0" prefHeight="26.0" prefWidth="29.0" promptText="yy" />
+      <RadioButton fx:id="idRadioButtonMedico" layoutX="103.0" layoutY="379.0" mnemonicParsing="false" text="Medico" />
+      <RadioButton fx:id="idRadioButtonParamedico" layoutX="316.0" layoutY="379.0" mnemonicParsing="false" text="Paramedico" />
     </children>
 </AnchorPane>
