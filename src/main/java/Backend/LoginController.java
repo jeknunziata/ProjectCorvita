@@ -1,5 +1,6 @@
 package Backend;
 
+import Utils.UtenteDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LoginController {
     private Stage stage;
@@ -43,7 +45,7 @@ public class LoginController {
         switchScene(event, "/Scene/MainPage.fxml");
     }
 
-    public void Login(ActionEvent event) throws IOException {
+    public void Login(ActionEvent event) throws IOException, SQLException {
 
         /*String username = CodiceLogin.getText();
 
@@ -57,7 +59,12 @@ public class LoginController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();*/
-        switchScene(event, "/Scene/HomePage.fxml");
+        int chiave = Integer.parseInt(CodiceLogin.getText());
+        UtenteDAO dao = new UtenteDAO();
+        if (dao.checkChiaveLicenza(chiave)){
+            switchScene(event, "/Scene/HomePage.fxml");
+        }
+
 
 
     }

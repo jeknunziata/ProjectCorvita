@@ -51,4 +51,14 @@ public class UtenteDAO {
         }
         return utenti;
     }
+    public boolean checkChiaveLicenza(int chiave) throws SQLException {
+        String query = "SELECT ChiaveLicenza FROM Utente WHERE ChiaveLicenza = ?";
+        try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1, chiave);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next(); // Restituisce true se esiste almeno un risultato
+            }
+        }
+    }
+
 }

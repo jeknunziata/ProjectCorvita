@@ -4,15 +4,24 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-
+<?import javafx.scene.text.Font?>
 
 <StackPane prefHeight="816.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.LoginController">
    <children>
       <Pane prefHeight="816.0" prefWidth="1536.0" style="-fx-background-color: #E8F6F3;">
          <children>
-            <Button layoutX="643.0" layoutY="471.0" mnemonicParsing="false" onAction="#switchMain" style="-fx-background-color: #0b3954;" text="Torna indietro" textFill="WHITE" />
-            <Button fx:id="LoginButton" layoutX="882.0" layoutY="474.0" mnemonicParsing="false" onAction="#Login" style="-fx-background-color: #0b3954;" text="Login" textFill="WHITE" />
-            <PasswordField fx:id="CodiceLogin" layoutX="562.0" layoutY="390.0" prefHeight="25.0" prefWidth="421.0" promptText="Inserire il proprio codice" />
+            <Button layoutX="560.0" layoutY="472.0" mnemonicParsing="false" onAction="#switchMain" style="-fx-background-color: #0b3954;" text="Torna indietro" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <Button fx:id="LoginButton" layoutX="898.0" layoutY="472.0" mnemonicParsing="false" onAction="#Login" style="-fx-background-color: #0b3954;" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <PasswordField fx:id="CodiceLogin" layoutX="496.0" layoutY="380.0" prefHeight="51.0" prefWidth="591.0" promptText="Inserire il proprio codice">
+               <font>
+                  <Font size="24.0" />
+               </font></PasswordField>
          </children>
       </Pane>
    </children>

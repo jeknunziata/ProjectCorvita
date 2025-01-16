@@ -43,6 +43,9 @@ public class HomePageController {
     public void switchCreaCartellaClinica(ActionEvent event) throws IOException {
         switchScene(event, "/Scene/CreaCartellaClinica.fxml");
     }
+    public void switchAreaUtente(ActionEvent event) throws IOException {
+        switchScene(event, "/Scene/AreaUtente.fxml");
+    }
 
     public void displayName(String username) {
         nomeUtenteLabel.setText(username);
