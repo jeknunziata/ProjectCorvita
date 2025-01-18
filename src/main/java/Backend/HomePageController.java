@@ -47,6 +47,10 @@ public class HomePageController {
         switchScene(event, "/Scene/AreaUtente.fxml");
     }
 
+   // public void metodoMock(){
+
+    //}
+
     public void displayName(String username) {
         nomeUtenteLabel.setText(username);
     }

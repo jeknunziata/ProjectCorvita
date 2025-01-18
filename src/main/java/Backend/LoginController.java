@@ -31,40 +31,36 @@ public class LoginController {
         System.out.println(screenWidth);
         System.out.println(screenHeight);
 
-        root = FXMLLoader.load(getClass().getResource(fxmlPath));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+        root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root, screenWidth, screenHeight);
         stage.setMaximized(true);
+
+        /* scene.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent event) {
+                System.out.println(event.getCode());
+            }
+        });
+        */
+
         stage.setScene(scene);
         stage.show();
     }
 
 
-    //Metodi necessari allo switch tra le pagine iniziali
+    //Metodi necessari allo switch della pagina iniziale e al login con verifica dei dati
     public void switchMain(ActionEvent event) throws IOException {
         switchScene(event, "/Scene/MainPage.fxml");
     }
 
     public void Login(ActionEvent event) throws IOException, SQLException {
 
-        /*String username = CodiceLogin.getText();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
-        root = loader.load();
-
-        HomePageController HomePageController = loader.getController();
-        HomePageController.displayName(username);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();*/
         int chiave = Integer.parseInt(CodiceLogin.getText());
         UtenteDAO dao = new UtenteDAO();
         if (dao.checkChiaveLicenza(chiave)){
             switchScene(event, "/Scene/HomePage.fxml");
         }
-
 
 
     }

@@ -92,7 +92,6 @@ public class AcquistoLicenzaController {
     }
 
     private void switchScene(ActionEvent event, String fxmlPath) throws IOException {
-        System.out.println("Cambio scena a: " + fxmlPath);
         //essendo java buggato ci prendiamo la grandezza dello schermo per mantenere la grandezza massima della finestra
         Screen screen = Screen.getPrimary();
         double screenWidth = screen.getVisualBounds().getWidth();
@@ -164,7 +163,7 @@ public class AcquistoLicenzaController {
             }
 
 
-            //Controlli sul nome del titolare :
+            //Controlli sul nome del titolare:
             NomeTitolareInserito = textFieldNomeTitolare.getText();
 
             if (!NomeTitolareInserito.isEmpty() && Character.isUpperCase(NomeTitolareInserito.charAt(0))) {
@@ -174,7 +173,7 @@ public class AcquistoLicenzaController {
                 isValid = false;
             }
 
-            //Controlli sul cognome del titolare :
+            //Controlli sul cognome del titolare:
             CognomeTitolareInserito = textFieldCognomeTitolare.getText();
             if (!CognomeTitolareInserito.isEmpty() && Character.isUpperCase(CognomeTitolareInserito.charAt(0))) {
                 textFieldCognomeTitolare.setStyle("-fx-border-color: none;");
@@ -313,7 +312,7 @@ private String combinaMeseAnno(String mese, String anno) throws ParseException {
         //Controllo se l'anno è nel range tra 00-99:
         int annoInt = Integer.parseInt(anno);
         if (annoInt < 0 || annoInt > 99) {
-            throw new ParseException("Mese non valido: " + anno, 0);
+            throw new ParseException("Anno non valido: " + anno, 0);
         }
 
         String dataString = mese + "/" + anno; System.out.println("Combinazione della data: " + dataString);

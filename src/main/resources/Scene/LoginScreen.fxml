@@ -2,27 +2,18 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="816.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.LoginController">
-   <children>
-      <Pane prefHeight="816.0" prefWidth="1536.0" style="-fx-background-color: #E8F6F3;">
-         <children>
-            <Button layoutX="560.0" layoutY="472.0" mnemonicParsing="false" onAction="#switchMain" style="-fx-background-color: #0b3954;" text="Torna indietro" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font></Button>
-            <Button fx:id="LoginButton" layoutX="898.0" layoutY="472.0" mnemonicParsing="false" onAction="#Login" style="-fx-background-color: #0b3954;" text="Login" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font></Button>
-            <PasswordField fx:id="CodiceLogin" layoutX="496.0" layoutY="380.0" prefHeight="51.0" prefWidth="591.0" promptText="Inserire il proprio codice">
-               <font>
-                  <Font size="24.0" />
-               </font></PasswordField>
-         </children>
-      </Pane>
-   </children>
+<StackPane prefHeight="816.0" prefWidth="1536.0" stylesheets="/LoginScreen.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.LoginController">
+   <Pane prefHeight="816.0" prefWidth="1536.0" styleClass="backgroundLogin">
+      <ImageView disable="true" fitHeight="1080.0" fitWidth="1920.0" layoutX="212.0" layoutY="-87.0" opacity="0.13" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../logoCorVita.jpeg" />
+      </ImageView>
+      <Button layoutX="500.0" layoutY="440.0" mnemonicParsing="false" onAction="#switchMain" styleClass="back-button" text="Torna indietro" />
+      <Button fx:id="LoginButton" layoutX="900.0" layoutY="440.0" mnemonicParsing="false" onAction="#Login" prefWidth="120.0" text="Login" />
+      <PasswordField fx:id="CodiceLogin" layoutX="465.0" layoutY="300.0" prefHeight="50.0" prefWidth="600.0" promptText="Inserire il proprio codice" />
+   </Pane>
 </StackPane>

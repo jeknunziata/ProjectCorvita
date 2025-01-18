@@ -9,18 +9,18 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1536.0" stylesheets="/HomePage.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.HomePageController">
    <children>
-      <Pane prefHeight="50.0" prefWidth="1536.0" styleClass="header-pane">
+      <Pane prefHeight="93.0" prefWidth="1536.0" styleClass="header-pane">
          <children>
-            <Button layoutX="230.0" layoutY="8.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="97.0" text="Storico" />
-            <Button layoutX="30.0" layoutY="8.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" prefHeight="34.0" prefWidth="148.0" text="Crea nuova cartella" />
-            <TextField layoutX="588.0" layoutY="6.0" prefHeight="38.0" prefWidth="292.0" promptText="Cerca" />
-            <Button layoutX="1217.0" layoutY="9.0" mnemonicParsing="false" onAction="#switchAreaUtente" prefHeight="34.0" prefWidth="131.0" text="Area Utente" />
-            <Button layoutX="1403.0" layoutY="7.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Esci" />
-            <Button layoutX="1033.0" layoutY="8.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="131.0" text="Aggiungi cartella" />
+            <Button layoutX="279.0" layoutY="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Storico" />
+            <Button layoutX="31.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" prefHeight="50.0" prefWidth="180.0" text="Crea nuova cartella" />
+            <TextField layoutX="593.0" layoutY="22.0" prefHeight="50.0" prefWidth="350.0" promptText="Cerca" />
+            <Button layoutX="1208.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchAreaUtente" prefHeight="50.0" prefWidth="150.0" text="Area Utente" />
+            <Button layoutX="1416.0" layoutY="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Esci" />
+            <Button layoutX="1017.0" layoutY="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="140.0" text="Condividi Cartella" />
          </children>
       </Pane>
-      <Separator disable="true" layoutY="50.0" prefHeight="18.0" prefWidth="1536.0" />
-      <Pane layoutY="80.0" prefHeight="300.0" prefWidth="1500.0" styleClass="content-pane">
+      <Separator disable="true" layoutY="94.0" prefHeight="18.0" prefWidth="1536.0" />
+      <Pane layoutX="18.0" layoutY="147.0" prefHeight="300.0" prefWidth="1500.0" styleClass="content-pane">
          <children>
             <Label layoutX="53.0" prefHeight="38.0" prefWidth="694.0" text="NomeCognome" />
             <Label layoutX="1152.0" prefHeight="38.0" prefWidth="334.0" text="Data creazione:" />

@@ -12,7 +12,7 @@
    <children>
       <StackPane layoutX="373.0" layoutY="66.0" prefHeight="389.0" prefWidth="835.0">
          <children>
-            <ScrollPane fx:id="scrollContainer" fitToWidth="true" prefHeight="407.0" prefWidth="835.0">
+            <ScrollPane fx:id="scrollContainer" fitToWidth="true" prefHeight="300.0" prefWidth="835.0">
                 <content>
                     <GridPane fx:id="sintomiGrid" alignment="CENTER" hgap="10" vgap="10">
             <!-- Le checkbox verranno aggiunte dinamicamente qui -->
@@ -21,23 +21,23 @@
             </ScrollPane>
          </children>
       </StackPane>
-      <Button layoutX="730.0" layoutY="481.0" mnemonicParsing="false" onAction="#getMalattie" text="Malattie">
+      <Button layoutX="731.0" layoutY="471.0" mnemonicParsing="false" onAction="#getMalattie" text="Malattie">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <StackPane fx:id="malattieStack" layoutX="490.0" layoutY="583.0" prefHeight="150.0" prefWidth="602.0" />
-      <Text layoutX="502.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sintomi">
+      <StackPane fx:id="malattieStack" layoutX="440.0" layoutY="540.0" prefHeight="200.0" prefWidth="700.0" />
+      <Text layoutX="393.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sintomi" wrappingWidth="118.4140625">
          <font>
-            <Font size="24.0" />
+            <Font size="28.0" />
          </font>
       </Text>
-      <Button layoutX="1394.0" layoutY="697.0" mnemonicParsing="false" text="Conferma">
+      <Button layoutX="1300.0" layoutY="700.0" mnemonicParsing="false" text="Conferma">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="8.0" layoutY="699.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" text="Indietro">
+      <Button layoutX="150.0" layoutY="700.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" text="Indietro">
          <font>
             <Font size="24.0" />
          </font>

@@ -1,0 +1,25 @@
+.backgroundLogin{
+    -fx-background-color: #bfbcbc;
+}
+
+.back-button {
+    -fx-background-color: #0b3954;
+    -fx-font: "Verdana";
+    -fx-font-size: 24px;
+    -fx-text-fill: #E7F6F3;
+}
+
+.button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(166, 213, 193,0.8), 10, 0.7, 0, 0);
+}
+
+#LoginButton {
+    -fx-background-color: #0b3954;
+    -fx-font: "Verdana";
+    -fx-font-size: 24px;
+    -fx-text-fill: #E7F6F3;
+}
+
+#CodiceLogin {
+    -fx-font-size: 24px;
+}

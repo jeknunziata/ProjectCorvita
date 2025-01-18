@@ -5,15 +5,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.VisualizzaChiaveLicenzaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.VisualizzaChiaveLicenzaController">
    <children>
-      <Text layoutX="7.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACQUISTO COMPLETATO CON SUCCESSO!!!" textAlignment="CENTER" wrappingWidth="591.7366943359375">
+      <Text layoutX="7.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACQUISTO COMPLETATO CON SUCCESSO!!!" textAlignment="CENTER" wrappingWidth="591.7366943359375" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="470.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font size="33.0" />
          </font>
       </Text>
-      <Text fx:id="textChiave" layoutX="5.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ecco la tua chiave di licenza:  X" textAlignment="CENTER" wrappingWidth="572.5367431640625" />
-      <Button layoutX="257.0" layoutY="337.0" mnemonicParsing="false" onAction="#switchLogin" text="Vai a login" />
-      <Text layoutX="5.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE: salva la chiave licenza per effettuare il login" textAlignment="CENTER" wrappingWidth="557.336669921875" />
+      <Text fx:id="textChiave" layoutX="5.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ecco la tua chiave di licenza:  X" textAlignment="CENTER" wrappingWidth="572.5367431640625" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="470.0" AnchorPane.topAnchor="230.0" />
+      <Button layoutX="257.0" layoutY="337.0" mnemonicParsing="false" onAction="#switchLogin" text="Vai a login" AnchorPane.leftAnchor="680.0" AnchorPane.rightAnchor="720.0" AnchorPane.topAnchor="400.0" />
+      <Text layoutX="5.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE: salva la chiave licenza per effettuare il login" textAlignment="CENTER" wrappingWidth="557.336669921875" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="470.0" AnchorPane.topAnchor="280.0" />
    </children>
 </AnchorPane>
