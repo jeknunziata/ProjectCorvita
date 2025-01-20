@@ -12,7 +12,7 @@
    <Pane prefHeight="99.0" prefWidth="1536.0" styleClass="headerPane">
 
       <Button focusTraversable="false" layoutX="31.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" prefHeight="50.0" prefWidth="180.0" styleClass="navBarButton" text="Crea nuova cartella"/>
-      <Button focusTraversable="false" layoutX="268.0" layoutY="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="navBarButton" text="Storico"/>
+      <Button focusTraversable="false" layoutX="268.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchStorico" prefHeight="50.0" prefWidth="120.0" styleClass="navBarButton" text="Storico"/>
 
       <TextField focusTraversable="false" layoutX="563.0" layoutY="22.0" prefHeight="50.0" prefWidth="380.0" promptText="Cerca" styleClass="searchBar"/>
 
