@@ -47,7 +47,7 @@
    <Pane id="errorPane" layoutX="530.0" layoutY="680.0" prefHeight="80.0" prefWidth="500.0" styleClass="borderPane" visible="false">
 
       <Text styleClass="errorMessage" layoutX="26.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE: uno o più campi vuoti" wrappingWidth="448.16400146484375"/>
-
+<!-- commento -->
    </Pane>
 
 </Pane>
