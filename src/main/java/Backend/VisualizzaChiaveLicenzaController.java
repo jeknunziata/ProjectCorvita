@@ -43,7 +43,7 @@ public class VisualizzaChiaveLicenzaController {
     public void acquisizioneChiave(int chiaveLicenza) {
         this.chiaveLicenza = chiaveLicenza;
 
-        //setto nel label il valore della chiave
+        //setto nella label il valore della chiave
         textChiave.setText("Ecco la tua chiave di licenza: " + String.valueOf(chiaveLicenza));
 
     }

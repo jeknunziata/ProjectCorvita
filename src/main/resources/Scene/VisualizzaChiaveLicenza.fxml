@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.VisualizzaChiaveLicenzaController">
-   <children>
-      <Text layoutX="7.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACQUISTO COMPLETATO CON SUCCESSO!!!" textAlignment="CENTER" wrappingWidth="591.7366943359375" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="470.0" AnchorPane.topAnchor="20.0">
-         <font>
-            <Font size="33.0" />
-         </font>
-      </Text>
-      <Text fx:id="textChiave" layoutX="5.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ecco la tua chiave di licenza:  X" textAlignment="CENTER" wrappingWidth="572.5367431640625" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="470.0" AnchorPane.topAnchor="230.0" />
-      <Button layoutX="257.0" layoutY="337.0" mnemonicParsing="false" onAction="#switchLogin" text="Vai a login" AnchorPane.leftAnchor="680.0" AnchorPane.rightAnchor="720.0" AnchorPane.topAnchor="400.0" />
-      <Text layoutX="5.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE: salva la chiave licenza per effettuare il login" textAlignment="CENTER" wrappingWidth="557.336669921875" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="470.0" AnchorPane.topAnchor="280.0" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1536.0" styleClass="backgroundComplete" stylesheets="/VisualizzaChiaveLicenza.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.VisualizzaChiaveLicenzaController">
+
+   <ImageView disable="true" fitHeight="1080.0" fitWidth="1920.0" layoutX="212.0" layoutY="-87.0" opacity="0.13" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../logoCorVita.jpeg" />
+   </ImageView>
+
+   <Text layoutX="472.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="complete" text="ACQUISTO COMPLETATO CON SUCCESSO!!!" wrappingWidth="690.0" AnchorPane.leftAnchor="472.0" AnchorPane.rightAnchor="472.2633056640625" AnchorPane.topAnchor="60.05078125" />
+
+   <Text fx:id="textChiave" layoutX="470.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="completeText" text="Ecco la tua chiave di licenza:  X" wrappingWidth="600.0" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="493.4632568359375" AnchorPane.topAnchor="289.05078125" />
+
+   <Text fx:id="warningText" layoutX="470.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="completeText" text="ATTENZIONE: salva la chiave licenza per effettuare il login" wrappingWidth="600.0" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="508.663330078125" AnchorPane.topAnchor="362.0" />
+
+   <Button layoutX="666.0" layoutY="570.0" mnemonicParsing="false" onAction="#switchLogin" prefHeight="51.0" prefWidth="202.0" text="Vai a login" AnchorPane.leftAnchor="666.0" AnchorPane.rightAnchor="667.5999999999999" AnchorPane.topAnchor="570.0" />
+
 </AnchorPane>

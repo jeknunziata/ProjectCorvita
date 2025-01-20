@@ -9,94 +9,45 @@
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.CreaCartellaClinicaController">
-   <children>
-      <VBox layoutX="163.0" layoutY="28.0" prefHeight="350.0" prefWidth="500.0" spacing="12.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" wrappingWidth="75.28580474853516">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <TextField promptText="Nome">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome" wrappingWidth="160.6191177368164">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <TextField promptText="Cognome">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CF" wrappingWidth="75.28580474853516">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <TextField promptText="CF">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </TextField>
-         </children>
-      </VBox>
-      <VBox layoutX="867.0" layoutY="28.0" prefHeight="350.0" prefWidth="500.0" spacing="12.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Letto" wrappingWidth="75.28580474853516">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <TextField promptText="Letto">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" wrappingWidth="160.6191177368164">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <TextField promptText="Telefono">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CF Medico Curante" wrappingWidth="318.48575592041016">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <TextField promptText="CF Medico Curante">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </TextField>
-         </children>
-      </VBox>
-      <TextArea layoutX="163.0" layoutY="430.0" prefHeight="220.0" prefWidth="1207.0" promptText="Note...">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextArea>
-      <Text layoutX="163.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Button layoutX="1268.0" layoutY="718.0" mnemonicParsing="false" onAction="#switchSintomiEMalattie" text="Avanti">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="163.0" layoutY="718.0" mnemonicParsing="false" onAction="#switchHomePage" text="Indietro">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-   </children>
+
+   <VBox layoutX="350.0" layoutY="48.0" prefHeight="300.0" prefWidth="400.0" spacing="12.0">
+
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="inputTitle" text="Nome" wrappingWidth="75.28580474853516" />
+      <TextField id="nome" prefWidth="0.0" promptText="Nome" styleClass="campiInput" />
+
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="inputTitle" text="Cognome" wrappingWidth="160.6191177368164" />
+      <TextField id="cognome" promptText="Cognome" styleClass="campiInput" />
+
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="inputTitle" text="CF" wrappingWidth="75.28580474853516" />
+      <TextField id="cf" prefHeight="10.0" prefWidth="100.0" promptText="CF" styleClass="campiInput" />
+
+   </VBox>
+
+   <VBox layoutX="800.0" layoutY="48.0" prefHeight="300.0" prefWidth="400.0" spacing="12.0">
+
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="inputTitle" text="Letto" wrappingWidth="75.28580474853516" />
+      <TextField id="letto" promptText="Letto" styleClass="campiInput" />
+
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="inputTitle" text="Telefono" wrappingWidth="160.6191177368164" />
+      <TextField id="telefono" promptText="Telefono" styleClass="campiInput" />
+
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="inputTitle" text="CF Medico Curante" wrappingWidth="318.48575592041016" />
+      <TextField id="cfMedico" promptText="CF Medico Curante" styleClass="campiInput" />
+
+   </VBox>
+
+   <Text layoutX="350.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="inputTitle" text="Note" />
+   <TextArea id="note" layoutX="350.0" layoutY="440.0" prefHeight="200.0" prefWidth="860.0" promptText="Note..." styleClass="campiInput" wrapText="true" />
+
+   <Button layoutX="150.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchHomePage" prefWidth="150.0" styleClass="backButton" text="Indietro" />
+   <Button layoutX="1240.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchSintomiEMalattie" prefHeight="50.0" prefWidth="150.0" styleClass="malattieButton" text="Avanti" />
+
+   <Pane disable="true" layoutX="300.0" layoutY="30.0" prefHeight="650.0" prefWidth="940.0" styleClass="borderPane" />
+
+   <Pane id="errorPane" layoutX="530.0" layoutY="680.0" prefHeight="80.0" prefWidth="500.0" styleClass="borderPane" visible="false">
+
+      <Text styleClass="errorMessage" layoutX="26.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE: uno o più campi vuoti" wrappingWidth="448.16400146484375"/>
+
+   </Pane>
+
 </Pane>

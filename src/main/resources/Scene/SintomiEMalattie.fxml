@@ -27,17 +27,17 @@
          </font>
       </Button>
       <StackPane fx:id="malattieStack" layoutX="440.0" layoutY="540.0" prefHeight="200.0" prefWidth="700.0" />
-      <Text layoutX="393.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sintomi" wrappingWidth="118.4140625">
+      <Text fill="#0b3953" layoutX="390.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sintomi" wrappingWidth="118.4140625">
          <font>
-            <Font size="28.0" />
+            <Font name="Verdana" size="28.0" />
          </font>
       </Text>
-      <Button layoutX="1300.0" layoutY="700.0" mnemonicParsing="false" text="Conferma">
+      <Button layoutX="1200.0" layoutY="720.0" mnemonicParsing="false" text="Conferma">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="150.0" layoutY="700.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" text="Indietro">
+      <Button layoutX="200.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" text="Indietro">
          <font>
             <Font size="24.0" />
          </font>

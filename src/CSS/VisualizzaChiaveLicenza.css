@@ -1,0 +1,28 @@
+.backgroundComplete{
+   -fx-background-color: #bfbcbc;
+}
+
+.complete{
+    -fx-font-size: 35px;
+    -fx-text-alignment: center;
+    -fx-fill: radial-gradient(center 50% 50%, radius 50%, rgba(128, 219, 212, 1) 14%, rgba(11, 57, 83, 1) 44%);
+}
+
+#textChiave{
+    -fx-text-alignment: center;
+}
+
+.completeText{
+    -fx-font-size: 24px;
+    -fx-fill: #0B3953;
+}
+
+.button{
+    -fx-font-size: 20px;
+    -fx-text-fill: #0b3953;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255,0.8), 7, 0.4, 0, 0);
+}
+
+#warningText{
+    -fx-text-alignment: center;
+}
