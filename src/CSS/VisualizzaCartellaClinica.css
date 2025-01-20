@@ -1,0 +1,32 @@
+backgroundCartella{
+
+}
+
+.cartellaContainer{
+    -fx-border-color: black;
+    -fx-border-radius: 4%;
+}
+
+.datiCartellaClinica{
+    -fx-font-family: Verdana;
+    -fx-font-size: 24px;
+    -fx-fill: #0B3953;
+}
+
+.inputCartella, .noteCartellaClinica{
+    -fx-font-family: Verdana;
+    -fx-font-size: 16px;
+}
+
+.button{
+    -fx-font-family: Verdana;
+    -fx-font-size: 24px;
+}
+
+#changeButton{
+    -fx-text-fill: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 53.9823% 50.7576%, radius 92.2018%, #0b3954 0.0%, #7fdbd4 64.428%, #0b3954 100.0%);
+}
+
+#confirmButton{
+    -fx-text-fill:  radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 53.9823% 50.7576%, radius 92.2018%, #017a79 0.0%, #017a79 0.6729%, #ffc857 0.6729%, #898989 100.0%);
+}
