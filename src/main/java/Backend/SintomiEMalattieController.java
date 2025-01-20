@@ -6,6 +6,7 @@ import Utils.Sintomo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -106,8 +107,10 @@ public class SintomiEMalattieController {
 
         // Crea uno ScrollPane e imposta la griglia come contenuto
         ScrollPane scrollPane = new ScrollPane(malattieGrid);
-        scrollPane.setFitToWidth(true); // Adatta la larghezza allo ScrollPane
-        scrollPane.setFitToHeight(true); // Adatta l'altezza allo ScrollPane
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+        scrollPane.getStyleClass().add("contenitoreList");
+        scrollPane.setPadding(new Insets(5, 5, 5, 5));
 
         // Centra lo ScrollPane nello StackPane
         StackPane.setAlignment(scrollPane, javafx.geometry.Pos.CENTER);

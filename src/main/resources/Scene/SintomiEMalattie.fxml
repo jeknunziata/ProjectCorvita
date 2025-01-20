@@ -5,42 +5,27 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="816.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.SintomiEMalattieController">
-   <children>
-      <StackPane layoutX="373.0" layoutY="66.0" prefHeight="389.0" prefWidth="835.0">
-         <children>
-            <ScrollPane fx:id="scrollContainer" fitToWidth="true" prefHeight="300.0" prefWidth="835.0">
-                <content>
-                    <GridPane fx:id="sintomiGrid" alignment="CENTER" hgap="10" vgap="10">
-            <!-- Le checkbox verranno aggiunte dinamicamente qui -->
-        </GridPane>
-                </content>
-            </ScrollPane>
-         </children>
-      </StackPane>
-      <Button layoutX="731.0" layoutY="471.0" mnemonicParsing="false" onAction="#getMalattie" text="Malattie">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <StackPane fx:id="malattieStack" layoutX="440.0" layoutY="540.0" prefHeight="200.0" prefWidth="700.0" />
-      <Text fill="#0b3953" layoutX="390.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sintomi" wrappingWidth="118.4140625">
-         <font>
-            <Font name="Verdana" size="28.0" />
-         </font>
-      </Text>
-      <Button layoutX="1200.0" layoutY="720.0" mnemonicParsing="false" text="Conferma">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button layoutX="200.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" text="Indietro">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-   </children>
+<Pane styleClass="backgroundSintomi" prefHeight="816.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.SintomiEMalattieController" stylesheets="/SintomiEMalattie.css">
+
+   <Text layoutX="390.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titoloSeM" text="Sintomi" wrappingWidth="118.4140625"/>
+
+   <StackPane layoutX="350.0" layoutY="65.0" prefHeight="390.0" prefWidth="835.0">
+
+      <ScrollPane fx:id="scrollContainer" fitToWidth="true" prefHeight="300.0" prefWidth="835.0" styleClass="contenitoreList">
+
+         <GridPane fx:id="sintomiGrid" alignment="CENTER" hgap="10" vgap="10">
+            <!-- I sintomi verranno aggiunti dinamicamente qui -->
+         </GridPane>
+      </ScrollPane>
+   </StackPane>
+
+   <Button fx:id="malattieButton" layoutX="690.0" layoutY="470.0" mnemonicParsing="false" onAction="#getMalattie" prefWidth="150.0" text="Malattie"/>
+   <StackPane fx:id="malattieStack" layoutX="418.0" layoutY="546.0" prefHeight="200.0" prefWidth="700.0"/>
+   <!-- Le malattie finiranno invece in questo pane -->
+
+   <Button styleClass="confirmSeM" layoutX="1185.0" layoutY="720.0" mnemonicParsing="false" prefWidth="150.0" text="Conferma"/>
+   <Button styleClass="backSeM" layoutX="200.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" prefWidth="150.0" text="Indietro"/>
+
 </Pane>

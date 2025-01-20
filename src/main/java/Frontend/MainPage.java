@@ -16,8 +16,8 @@ public class MainPage extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        /*JDBC bd=new JDBC();
-        bd.connect();*/
+        JDBC bd=new JDBC();
+        bd.connect();
 
         //creazione del root contenente i dati della schermata iniziale e applicazione di questi alla scena
         Parent root = FXMLLoader.load(getClass().getResource("/Scene/MainPage.fxml"));
@@ -53,7 +53,7 @@ public class MainPage extends Application {
 
         if(alert.showAndWait().get() == ButtonType.OK) {
             System.out.println("Logout called");
-           // bd.disconnect();
+            bd.disconnect();
             stage.close();
         }
 
