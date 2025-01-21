@@ -3,18 +3,31 @@ package Utils;
 import java.util.Date;
 
 public class CartellaClinica {
+    private int id;
     private String CF;
     private String Nome;
     private String Cognome;
-    private String Telefone;
+    private String Telefono;
     private int letto;
     private Date Data_modifica;
     private String CF_MedicoCurante;
     private String note;
     private int ID;
 
-    public CartellaClinica() {
+    public CartellaClinica(int id, String CF,String Nome,String Cognome, String Telefono,int letto,Date Data_modifica,String CF_MedicoCurante,String note) {
+        this.id = id;
+        this.CF = CF;
+        this.Nome = Nome;
+        this.Cognome = Cognome;
+        this.Telefono = Telefono;
+        this.letto = letto;
+        this.Data_modifica = Data_modifica;
+        this.CF_MedicoCurante = CF_MedicoCurante;
+        this.note = note;
     }
+
+    public CartellaClinica() {}
+
     public String getCF() {
         return CF;
     }
@@ -42,7 +55,7 @@ public class CartellaClinica {
     }
 
     public String getTelefone() {
-        return Telefone;
+        return Telefono;
     }
 
     public int getID() {
@@ -77,8 +90,8 @@ public class CartellaClinica {
         this.note = note;
     }
 
-    public void setTelefone(String telefone) {
-        Telefone = telefone;
+    public void setTelefone(String telefono) {
+        this.Telefono = telefono;
     }
 
     public void setID(int ID) {

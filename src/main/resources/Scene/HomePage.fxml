@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -13,11 +12,11 @@
    <Pane prefHeight="99.0" prefWidth="1536.0" styleClass="headerPane">
 
       <Button focusTraversable="false" layoutX="31.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" prefHeight="50.0" prefWidth="180.0" styleClass="navBarButton" text="Crea nuova cartella" />
-      <Button focusTraversable="false" layoutX="268.0" layoutY="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" styleClass="navBarButton" text="Storico" />
+      <Button focusTraversable="false" layoutX="268.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchStorico" prefHeight="50.0" prefWidth="120.0" styleClass="navBarButton" text="Storico" />
 
       <TextField focusTraversable="false" layoutX="563.0" layoutY="22.0" prefHeight="50.0" prefWidth="380.0" promptText="Cerca" styleClass="searchBar" />
 
-      <Button focusTraversable="false" layoutX="993.0" layoutY="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="navBarButton" text="Condividi Cartella" />
+      <Button focusTraversable="false" layoutX="993.0" layoutY="22.0" mnemonicParsing="false" onAction="#aggiungiCartellaClinica" prefHeight="50.0" prefWidth="150.0" styleClass="navBarButton" text="Condividi Cartella" />
       <Button focusTraversable="false" layoutX="1198.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchAreaUtente" prefHeight="50.0" prefWidth="150.0" styleClass="navBarButton" text="Area Utente" />
 
       <Button fx:id="exitButton" focusTraversable="false" layoutX="1416.0" layoutY="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Esci" />
@@ -27,9 +26,9 @@
    <Separator disable="true" layoutY="94.0" prefHeight="18.0" prefWidth="1536.0" />
 
    <!-- ScrollPane per mostrare le cartelle -->
-   <ScrollPane fx:id="scrollPane" layoutX="58.0" layoutY="120.0" prefHeight="670.0" prefWidth="1410.0" fitToWidth="true">
+   <ScrollPane fx:id="scrollPane" fitToWidth="true" layoutX="58.0" layoutY="120.0" prefHeight="670.0" prefWidth="1410.0">
       <content>
-         <VBox fx:id="cartelleContainer" spacing="10" alignment="TOP_LEFT" style="-fx-padding: 10;">
+         <VBox fx:id="cartelleContainer" alignment="TOP_LEFT" spacing="10" style="-fx-padding: 10;">
             <!-- I Pane delle cartelle saranno aggiunti dinamicamente -->
          </VBox>
       </content>

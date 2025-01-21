@@ -97,5 +97,35 @@ public class CartellaClinicaDao {
 
 
     }
+
+
+    //metodo che mi stabilisce se l'id inserito nel pop-up è presente tra le cartelle cliniche o meno
+    public static boolean findById(String idCheck) throws SQLException {
+        String query = "SELECT * FROM CartellaClinica WHERE ID_CartellaClinica = ?";
+
+        try(PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
+            preparedStatement.setString(1, idCheck);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                if (resultSet.getString("ID_CartellaClinica").equals(idCheck)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void aggiungiAllaStorico(int idCartella, int chiave) throws SQLException {
+        String query = "INSERT INTO Storico(ChiaveLicenza,ID_CartellaClinica,data_modifica,note) VALUES (?,?,?,?)";
+        try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1, chiave);
+            preparedStatement.setInt(2, idCartella);
+            preparedStatement.setTimestamp(3, new java.sql.Timestamp(new java.util.Date().getTime())); // Usa Timestamp
+            preparedStatement.setString(4, "Condivisione");
+            preparedStatement.executeUpdate();
+        }
+    }
+
 }
 
