@@ -13,7 +13,7 @@
          <Image url="@../logoCorVita.jpeg" />
       </ImageView>
       <Button layoutX="500.0" layoutY="440.0" mnemonicParsing="false" onAction="#switchMain" styleClass="back-button" text="Torna indietro" />
-      <Button fx:id="LoginButton" layoutX="900.0" layoutY="440.0" mnemonicParsing="false" onAction="#Login" prefWidth="120.0" text="Login" />
-      <PasswordField fx:id="CodiceLogin" layoutX="465.0" layoutY="300.0" prefHeight="50.0" prefWidth="600.0" promptText="Inserire il proprio codice" />
+      <Button fx:id="LoginButton" layoutX="900.0" layoutY="440.0" mnemonicParsing="false" onAction="#login" prefWidth="120.0" text="Login" />
+      <PasswordField fx:id="CodiceLogin" layoutX="465.0" layoutY="300.0" onKeyPressed="#handleKeyPress" prefHeight="50.0" prefWidth="600.0" promptText="Inserire il proprio codice" />
    </Pane>
 </StackPane>

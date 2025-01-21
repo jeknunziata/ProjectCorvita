@@ -15,6 +15,8 @@ public class Utente {
         this.cognome = cognome;
         this.professione = professione;
     }
+    public Utente() {
+    }
 
     public int getChiaveLicenza() {
         return chiaveLicenza;

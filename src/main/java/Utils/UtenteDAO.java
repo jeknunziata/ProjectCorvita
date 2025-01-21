@@ -51,6 +51,25 @@ public class UtenteDAO {
         }
         return utenti;
     }
+    public Utente getUtente(int chiave) throws SQLException {
+        String selectQuery = "SELECT * FROM Utente WHERE ChiaveLicenza = ?";
+        try (PreparedStatement selectStatement = JDBC.getConnection().prepareStatement(selectQuery)) {
+            selectStatement.setInt(1, chiave);
+            try (ResultSet resultSet = selectStatement.executeQuery()) {
+                resultSet.next();
+                    Utente utente = new Utente(
+                            resultSet.getInt("ChiaveLicenza"), // ChiaveLicenza come intero
+                            resultSet.getString("CF"),
+                            resultSet.getString("Nome"),
+                            resultSet.getString("Cognome"),
+                            resultSet.getString("Professione")
+                    );
+                    return utente;
+
+            }
+        }
+
+    }
     public boolean checkChiaveLicenza(int chiave) throws SQLException {
         String query = "SELECT ChiaveLicenza FROM Utente WHERE ChiaveLicenza = ?";
         try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
@@ -60,5 +79,25 @@ public class UtenteDAO {
             }
         }
     }
+    public void modificaUtente(Utente utente) throws SQLException {
+        String query = "UPDATE Utente SET Nome = ?, Cognome = ?, CF = ? WHERE ChiaveLicenza = ?";
+        try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
+            preparedStatement.setString(1, utente.getNome());
+            preparedStatement.setString(2, utente.getCognome());
+            preparedStatement.setString(3, utente.getCF());
+            preparedStatement.setInt(4, utente.getChiaveLicenza());
+
+            int rowsUpdated = preparedStatement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Utente aggiornato con successo.");
+            } else {
+                System.out.println("Nessun utente trovato con il codice fiscale specificato.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e; // Propaga l'eccezione al chiamante
+        }
+    }
+
 
 }

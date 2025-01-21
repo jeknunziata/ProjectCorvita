@@ -11,6 +11,7 @@ public class CartellaClinica {
     private Date Data_modifica;
     private String CF_MedicoCurante;
     private String note;
+    private int ID;
 
     public CartellaClinica() {
     }
@@ -44,6 +45,10 @@ public class CartellaClinica {
         return Telefone;
     }
 
+    public int getID() {
+        return ID;
+    }
+
     public void setCognome(String cognome) {
         Cognome = cognome;
     }
@@ -74,5 +79,9 @@ public class CartellaClinica {
 
     public void setTelefone(String telefone) {
         Telefone = telefone;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

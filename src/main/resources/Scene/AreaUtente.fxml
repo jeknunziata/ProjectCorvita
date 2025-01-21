@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1536.0" styleClass="backgroundUser" stylesheets="/AreaUtente.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.AreaUtenteController">
@@ -15,24 +16,29 @@
 
    <Pane layoutX="285.0" layoutY="46.0" prefHeight="242.0" prefWidth="967.0" styleClass="infoContainer">
 
-      <Text layoutX="250.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="Nome_utente" wrappingWidth="192.171630859375" />
-      <Text layoutX="250.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" style="" styleClass="userInfo" text="Cognome_utente" wrappingWidth="192.171630859375" />
-      <Text layoutX="760.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="CF_utente" wrappingWidth="192.171630859375" />
-      <Text layoutX="760.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="Professione_utente" wrappingWidth="201.771728515625" />
+      <Text fx:id="nome" layoutX="250.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="Nome_utente" wrappingWidth="192.171630859375" />
+      <Text fx:id="cognome" layoutX="250.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" style="" styleClass="userInfo" text="Cognome_utente" wrappingWidth="192.171630859375" />
+      <Text fx:id="cf" layoutX="760.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="CF_utente" wrappingWidth="192.171630859375" />
+      <Text fx:id="professione" layoutX="760.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="Professione_utente" wrappingWidth="201.771728515625" />
 
-      <Text fx:id="nome" layoutX="86.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="Nome" />
-      <Text fx:id="cognome" layoutX="86.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="Cognome" />
-      <Text fx:id="cf" layoutX="587.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="CF" />
+      <Text layoutX="86.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="Nome" />
+      <Text layoutX="86.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="Cognome" />
+      <Text layoutX="587.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="CF" />
       <Text layoutX="587.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="userInfo" text="Professione" />
 
-      <TextField promptText="Nuovo Nome" layoutX="250.0" layoutY="50.0" prefHeight="20.0" prefWidth="200.0" styleClass="changeInput"/>
-      <TextField promptText="Nuovo Cognome" layoutX="250.0" layoutY="160.0" prefHeight="20.0" prefWidth="200.0" styleClass="changeInput"/>
-      <TextField promptText="Nuovo CF" layoutX="740.0" layoutY="160.0" prefHeight="20.0" prefWidth="200.0" styleClass="changeInput"/>
+      <TextField fx:id="inputNome" focusTraversable="false" layoutX="250.0" layoutY="50.0" prefHeight="20.0" prefWidth="200.0" promptText="Nuovo Nome" styleClass="changeInput" visible="false" />
+      <TextField fx:id="inputCognome" focusTraversable="false" layoutX="250.0" layoutY="160.0" prefHeight="20.0" prefWidth="200.0" promptText="Nuovo Cognome" styleClass="changeInput" visible="false" />
+      <TextField fx:id="inputCF" focusTraversable="false" layoutX="740.0" layoutY="50.0" prefHeight="20.0" prefWidth="200.0" promptText="Nuovo CF" styleClass="changeInput" visible="false" />
 
    </Pane>
 
-   <Button fx:id="AlterButton" focusTraversable="false" layoutX="688.0" layoutY="464.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="161.0" text="Modifica" />
+   <Button fx:id="AlterButton" focusTraversable="false" layoutX="688.0" layoutY="464.0" mnemonicParsing="false" onAction="#modifica" prefHeight="51.0" prefWidth="161.0" text="Modifica" />
    <Button fx:id="BackButton" focusTraversable="false" layoutX="168.0" layoutY="663.0" mnemonicParsing="false" onAction="#switchHomePage" text="Indietro" />
-   <Button fx:id="ConfirmAlterButton" focusTraversable="false" layoutX="1251.0" layoutY="663.0" mnemonicParsing="false" text="Conferma" />
+   <Button fx:id="ConfirmAlterButton" focusTraversable="false" layoutX="1251.0" layoutY="663.0" mnemonicParsing="false" onAction="#conferma" text="Conferma" visible="false" />
+   <Text fx:id="errorMessage" fill="RED" layoutX="653.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uno o più campi vuoti" visible="false">
+      <font>
+         <Font name="Verdana" size="24.0" />
+      </font>
+   </Text>
 
 </Pane>

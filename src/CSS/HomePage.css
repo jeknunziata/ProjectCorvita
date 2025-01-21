@@ -7,19 +7,19 @@
 }
 
 .navBarButton{
-    -fx-font: "Verdana";
+    -fx-font-family: Verdana;
     -fx-font-size: 14px;
     -fx-text-fill: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 53.9823% 50.7576%, radius 92.2018%, #0b3954 0.0%, #7fdbd4 64.428%, #0b3954 100.0%);
 }
 
 #exitButton{
-    -fx-font: "Verdana";
+    -fx-font-family: Verdana;
     -fx-font-size: 14px;
     -fx-text-fill: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 53.9823% 50.7576%, radius 92.2018%, #017a79 0.0%, #017a79 0.6729%, #ffc857 10.6729%, red 100.0%);
 }
 
 .searchBar{
-    -fx-font: "Verdana";
+    -fx-font-family: Verdana;
     -fx-font-size: 14px;
 }
 
@@ -33,13 +33,13 @@
     -fx-text-fill: #0B3953;
     -fx-border-color: black;
     -fx-background-color: white;
-    -fx-font: "Verdana";
+    -fx-font-family: Verdana;
     -fx-font-size: 14px;
 }
 
 .modifyButton{
     -fx-text-fill: #A6D5C1;
-    -fx-font: "Verdana";
+    -fx-font-family: Verdana;
     -fx-font-size: 14px;
 }
 
@@ -51,6 +51,6 @@
 .cartellaContentInfo{
     -fx-fill: #0b3953;
     -fx-effect: dropshadow(gaussian, #A6D5C1, 10, 0.5, 0, 0);
-    -fx-font: "Verdana";
+    -fx-font-family: Verdana;
     -fx-font-size: 14px;
 }

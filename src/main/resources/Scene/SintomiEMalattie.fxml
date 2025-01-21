@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
 
-<Pane styleClass="backgroundSintomi" prefHeight="816.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.SintomiEMalattieController" stylesheets="/SintomiEMalattie.css">
+<Pane prefHeight="816.0" prefWidth="1536.0" styleClass="backgroundSintomi" stylesheets="/SintomiEMalattie.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.SintomiEMalattieController">
 
-   <Text layoutX="390.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titoloSeM" text="Sintomi" wrappingWidth="118.4140625"/>
+   <Text layoutX="390.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titoloSeM" text="Sintomi" wrappingWidth="118.4140625" />
 
    <StackPane layoutX="350.0" layoutY="65.0" prefHeight="390.0" prefWidth="835.0">
 
@@ -21,11 +21,11 @@
       </ScrollPane>
    </StackPane>
 
-   <Button fx:id="malattieButton" layoutX="690.0" layoutY="470.0" mnemonicParsing="false" onAction="#getMalattie" prefWidth="150.0" text="Malattie"/>
-   <StackPane fx:id="malattieStack" layoutX="418.0" layoutY="546.0" prefHeight="200.0" prefWidth="700.0"/>
+   <Button fx:id="malattieButton" layoutX="690.0" layoutY="470.0" mnemonicParsing="false" onAction="#getMalattie" prefWidth="150.0" text="Malattie" />
+   <StackPane fx:id="malattieStack" layoutX="418.0" layoutY="546.0" prefHeight="200.0" prefWidth="700.0" />
    <!-- Le malattie finiranno invece in questo pane -->
 
-   <Button styleClass="confirmSeM" layoutX="1185.0" layoutY="720.0" mnemonicParsing="false" prefWidth="150.0" text="Conferma"/>
-   <Button styleClass="backSeM" layoutX="200.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" prefWidth="150.0" text="Indietro"/>
+   <Button layoutX="1185.0" layoutY="720.0" mnemonicParsing="false" onAction="#confermaScelte" prefWidth="150.0" styleClass="confirmSeM" text="Conferma" />
+   <Button layoutX="200.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" prefWidth="150.0" styleClass="backSeM" text="Indietro" />
 
 </Pane>

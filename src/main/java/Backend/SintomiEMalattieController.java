@@ -1,8 +1,6 @@
 package Backend;
 
-import Utils.Malattia;
-import Utils.MalattieDao;
-import Utils.Sintomo;
+import Utils.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +28,8 @@ public class SintomiEMalattieController {
     private StackPane malattieStack;
     @FXML
     private ScrollPane scrollContainer;
+
+    private CartellaClinica cartellaClinica;
 
     private Stage stage;
     private Scene scene;
@@ -134,7 +134,16 @@ public class SintomiEMalattieController {
     public void switchCreaCartellaClinica(ActionEvent event) throws IOException {
         switchScene(event, "/Scene/CreaCartellaClinica.fxml");
     }
+    public void confermaScelte(ActionEvent event) throws IOException, SQLException {
+        List<String> sintomi = getSelectedSintomi();
+        SintomiDao sintomiDao = new SintomiDao();
+        sintomiDao.salvaSintomi(cartellaClinica.getID(),sintomi);
+        switchScene(event, "/Scene/HomePage.fxml");
 
 
+    }
 
+    public void setCartellaClinica(CartellaClinica cartellaClinica) {
+        this.cartellaClinica = cartellaClinica;
+    }
 }

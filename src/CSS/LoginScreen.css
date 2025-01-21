@@ -4,7 +4,7 @@
 
 .back-button {
     -fx-background-color: #0b3954;
-    -fx-font: "Verdana";
+    -fx-font-family: Verdana;
     -fx-font-size: 24px;
     -fx-text-fill: #E7F6F3;
 }
@@ -15,7 +15,7 @@
 
 #LoginButton {
     -fx-background-color: #0b3954;
-    -fx-font: "Verdana";
+    -fx-font-family: Verdana;
     -fx-font-size: 24px;
     -fx-text-fill: #E7F6F3;
 }

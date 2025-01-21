@@ -14,6 +14,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class HomePageController {
 
@@ -23,6 +24,7 @@ public class HomePageController {
 
     @FXML
     Label nomeUtenteLabel;
+    private static int chiave;
 
     private Stage stage;
     private Scene scene;
@@ -43,8 +45,20 @@ public class HomePageController {
     public void switchCreaCartellaClinica(ActionEvent event) throws IOException {
         switchScene(event, "/Scene/CreaCartellaClinica.fxml");
     }
-    public void switchAreaUtente(ActionEvent event) throws IOException {
-        switchScene(event, "/Scene/AreaUtente.fxml");
+    public void switchAreaUtente(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/AreaUtente.fxml"));
+        root = loader.load();
+        Screen screen = Screen.getPrimary();
+        double screenWidth = screen.getVisualBounds().getWidth();
+        double screenHeight = screen.getVisualBounds().getHeight();
+        // Recupera il controller della nuova scena
+        AreaUtenteController controller = loader.getController();
+        controller.setUtente(chiave);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root, screenWidth, screenHeight);
+        stage.setMaximized(true);
+        stage.setScene(scene);
+        stage.show();
     }
 
    // public void metodoMock(){
@@ -69,5 +83,13 @@ public class HomePageController {
             stage.close();
         }
 
+    }
+
+    public void setChiave(int chiave) {
+        this.chiave = chiave;
+    }
+
+    public int getChiave() {
+        return chiave;
     }
 }

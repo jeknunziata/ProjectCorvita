@@ -8,7 +8,7 @@
 }
 
 .userInfo{
-    -fx-font: "Verdana";
+    -fx-font-family: Verdana;
     -fx-font-size: 24px;
     -fx-fill: #027A79;
     -fx-effect: dropshadow(gaussian, #A6D5C1, 8, 0.5, 0, 0);
@@ -16,7 +16,7 @@
 
 .button{
     -fx-font-size: 24px;
-    -fx-font: "Verdana";
+    -fx-font-family: Verdana;
 }
 
 #AlterButton{
@@ -28,12 +28,10 @@
 }
 
 #ConfirmAlterButton{
-    visibility: false;
     -fx-text-fill: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 53.9823% 50.7576%, radius 92.2018%, #017a79 0.0%, #017a79 0.6729%, #ffc857 0.6729%, #F2E8DC 100.0%);
 }
 
 .changeInput{
-    -fx-font: "Verdana";
+    -fx-font-family: Verdana;
     -fx-font-size: 24px;
-    visibility: false;
 }

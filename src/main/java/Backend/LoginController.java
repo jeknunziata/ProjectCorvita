@@ -7,7 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -21,6 +26,10 @@ public class LoginController {
 
     @FXML
     PasswordField CodiceLogin;
+    @FXML
+    private Button LoginButton;
+    @FXML
+    private Text errorText;
 
     private void switchScene(ActionEvent event, String fxmlPath) throws IOException {
 
@@ -54,14 +63,47 @@ public class LoginController {
         switchScene(event, "/Scene/MainPage.fxml");
     }
 
-    public void Login(ActionEvent event) throws IOException, SQLException {
+    public void login(ActionEvent event) throws IOException, SQLException {
+        Screen screen = Screen.getPrimary();
+        double screenWidth = screen.getVisualBounds().getWidth();
+        double screenHeight = screen.getVisualBounds().getHeight();
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
+        root = loader.load();
+        // Recupera il controller della nuova scena
+        HomePageController controller = loader.getController();
 
-        int chiave = Integer.parseInt(CodiceLogin.getText());
-        UtenteDAO dao = new UtenteDAO();
-        if (dao.checkChiaveLicenza(chiave)){
-            switchScene(event, "/Scene/HomePage.fxml");
+
+        try {
+            int chiave = Integer.parseInt(CodiceLogin.getText());
+            UtenteDAO dao = new UtenteDAO();
+            if (dao.checkChiaveLicenza(chiave)){
+                controller.setChiave(chiave);
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root, screenWidth, screenHeight);
+                stage.setMaximized(true);
+                stage.setScene(scene);
+                stage.show();
+            }
+            else {
+                System.out.println("Errore");
+                errorText.setText("Chiave non valida");
+                errorText.setVisible(true);
+            }
+
+        } catch (Exception e) {
+            errorText.setText("Nessuna chiave inserita");
+            errorText.setVisible(true);
+            System.out.println(e);
         }
 
 
+
+
+    }
+    @FXML
+    private void handleKeyPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            LoginButton.fire(); // Simula il clic del pulsante Login
+        }
     }
 }
