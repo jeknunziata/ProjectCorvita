@@ -8,30 +8,39 @@ import java.util.List;
 
 public class CartellaClinicaDao {
 
-    public List<CartellaClinica> getCartelle() throws SQLException {
+    public List<CartellaClinica> getCartelle(int chiave) throws SQLException {
         List<CartellaClinica> cartellaClinica = new ArrayList<>();
-        String query = "SELECT * FROM CartellaClinica";
-        PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query);
-        ResultSet resultSet = preparedStatement.executeQuery();
+        String query = "SELECT * " +
+                "FROM Storico " +
+                "JOIN CartellaClinica " +
+                "ON Storico.ID_CartellaClinica = CartellaClinica.ID_CartellaClinica " +
+                "WHERE ChiaveLicenza = ?";
+        try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
+            // Imposta il valore del parametro nella query
+            preparedStatement.setInt(1, chiave);
 
-        // Creazione delle checkbox
-        while (resultSet.next()) {
-            CartellaClinica cartella = new CartellaClinica();
-            cartella.setCF(resultSet.getString("CF"));
-            cartella.setNome(resultSet.getString("Nome"));
-            cartella.setCognome(resultSet.getString("Cognome"));
-            cartella.setTelefone(resultSet.getString("Telefone"));
-            cartella.setLetto(resultSet.getInt("Letto"));
-            cartella.setCF_MedicoCurante(resultSet.getString("CF_MedicoCurante"));
-            cartella.setData_modifica(resultSet.getDate("Data_Modifica"));
-            cartella.setNote(resultSet.getString("Note"));
-            cartellaClinica.add(cartella);
-
+            // Esegui la query
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // Processa i risultati
+                while (resultSet.next()) {
+                    CartellaClinica cartella = new CartellaClinica();
+                    cartella.setCF(resultSet.getString("CF_Paziente"));
+                    cartella.setNome(resultSet.getString("Nome_paziente"));
+                    cartella.setCognome(resultSet.getString("Cognome_paziente"));
+                    cartella.setTelefone(resultSet.getString("Telefono"));
+                    cartella.setLetto(resultSet.getInt("numero_letto"));
+                    cartella.setCF_MedicoCurante(resultSet.getString("CF_Medico_Curante"));
+                    cartella.setData_modifica(resultSet.getDate("Data_creazione"));
+                    cartella.setNote(resultSet.getString("Note"));
+                    cartella.setID(resultSet.getInt("ID_CartellaClinica"));
+                    cartellaClinica.add(cartella);
+                }
+            }
         }
         return cartellaClinica;
-
     }
-    public CartellaClinica setCartella(CartellaClinica cartella) throws SQLException {
+
+    public CartellaClinica setCartella(CartellaClinica cartella,int chiave) throws SQLException {
         String query = "INSERT INTO CartellaClinica (CF_Paziente, Nome_paziente, Cognome_paziente, Telefono, numero_letto, CF_Medico_Curante, Data_creazione, Note) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
@@ -65,10 +74,26 @@ public class CartellaClinicaDao {
                 try (ResultSet resultSet = preparedStatement2.executeQuery();) {
                     resultSet.next();
                     cartella.setID(resultSet.getInt("ID_CartellaClinica"));
-                    return cartella;
+
 
                 }
         }
+        String query3 = "INSERT INTO Storico (ID_CartellaClinica, ChiaveLicenza, data_modifica, note) " +
+                "VALUES (?, ?, ?, ?)";
+        try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query3)) {
+            preparedStatement.setInt(1, cartella.getID());
+            preparedStatement.setInt(2, chiave);
+            preparedStatement.setDate(3, new java.sql.Date(cartella.getData_modifica().getTime()));
+            preparedStatement.setString(4,"Creazione");
+
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            // Gestione delle eccezioni
+            e.printStackTrace();
+            throw e;
+        }
+        return cartella;
 
 
     }

@@ -1,6 +1,7 @@
 package Backend;
 
 import Utils.UtenteDAO;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -83,6 +84,15 @@ public class LoginController {
                 stage.setMaximized(true);
                 stage.setScene(scene);
                 stage.show();
+                Platform.runLater(() -> {
+                    try {
+                        controller.caricaCartelle();
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                        errorText.setText("Errore nel caricamento delle cartelle");
+                        errorText.setVisible(true);
+                    }
+                });
             }
             else {
                 System.out.println("Errore");

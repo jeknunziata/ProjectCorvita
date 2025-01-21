@@ -1,6 +1,7 @@
 package Backend;
 
 import Utils.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -135,10 +136,27 @@ public class SintomiEMalattieController {
         switchScene(event, "/Scene/CreaCartellaClinica.fxml");
     }
     public void confermaScelte(ActionEvent event) throws IOException, SQLException {
+        Screen screen = Screen.getPrimary();
+        double screenWidth = screen.getVisualBounds().getWidth();
+        double screenHeight = screen.getVisualBounds().getHeight();
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
+        root = loader.load();
+        HomePageController controller = loader.getController();
         List<String> sintomi = getSelectedSintomi();
         SintomiDao sintomiDao = new SintomiDao();
         sintomiDao.salvaSintomi(cartellaClinica.getID(),sintomi);
-        switchScene(event, "/Scene/HomePage.fxml");
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root, screenWidth, screenHeight);
+        stage.setMaximized(true);
+        stage.setScene(scene);
+        stage.show();
+        Platform.runLater(() -> {
+            try {
+                controller.caricaCartelle();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        });
 
 
     }

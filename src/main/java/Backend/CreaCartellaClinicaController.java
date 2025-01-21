@@ -1,9 +1,7 @@
 package Backend;
 
-import Utils.CartellaClinica;
-import Utils.CartellaClinicaDao;
-import Utils.Sintomo;
-import Utils.SintomiDao;
+import Utils.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +23,7 @@ public class CreaCartellaClinicaController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private static int chiave;
     @FXML
     private TextField nome;
     @FXML
@@ -44,6 +43,7 @@ public class CreaCartellaClinicaController {
 
 
 
+
     private void switchScene(ActionEvent event, String fxmlPath) throws IOException {
         //essendo java buggato ci prendiamo la grandezza dello schermo per mantenere la grandezza massima della finestra
         Screen screen = Screen.getPrimary();
@@ -52,7 +52,6 @@ public class CreaCartellaClinicaController {
         root = FXMLLoader.load(getClass().getResource(fxmlPath));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root, screenWidth, screenHeight);
-        stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
     }
@@ -87,7 +86,8 @@ public class CreaCartellaClinicaController {
             cc.setCF_MedicoCurante(cfMedico.getText());
             cc.setTelefone(telefono.getText());
             CartellaClinica cc2;
-            cc2=ccDao.setCartella(cc);
+            System.out.println(chiave);
+            cc2=ccDao.setCartella(cc, chiave);
             controller.setCartellaClinica(cc2);
 
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -100,8 +100,28 @@ public class CreaCartellaClinicaController {
 
 
     }
-    public void switchHomePage(ActionEvent event) throws IOException {
-        switchScene(event, "/Scene/HomePage.fxml");
+    public void switchHomePage(ActionEvent event) throws IOException, SQLException {
+        Screen screen = Screen.getPrimary();
+        double screenWidth = screen.getVisualBounds().getWidth();
+        double screenHeight = screen.getVisualBounds().getHeight();
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root, screenWidth, screenHeight);
+        stage.setMaximized(true);
+        stage.setScene(scene);
+        stage.show();
+        HomePageController controller = loader.getController();
+        Platform.runLater(() -> {
+            try {
+                controller.caricaCartelle();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
+    public void setChiave(int chiave) {
+        this.chiave = chiave;
+    }
 }

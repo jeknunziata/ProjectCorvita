@@ -2,6 +2,7 @@ package Backend;
 
 import Utils.Utente;
 import Utils.UtenteDAO;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,8 +56,25 @@ public class AreaUtenteController {
 
 
     //Metodi necessari allo switch tra le pagine iniziali
-    public void switchHomePage(ActionEvent event) throws IOException {
-        switchScene(event, "/Scene/HomePage.fxml");
+    public void switchHomePage(ActionEvent event) throws IOException, SQLException {
+        Screen screen = Screen.getPrimary();
+        double screenWidth = screen.getVisualBounds().getWidth();
+        double screenHeight = screen.getVisualBounds().getHeight();
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
+        root = loader.load();
+        HomePageController controller = loader.getController();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root, screenWidth, screenHeight);
+        stage.setMaximized(true);
+        stage.setScene(scene);
+        stage.show();
+        Platform.runLater(() -> {
+            try {
+                controller.caricaCartelle();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
     public void modifica(ActionEvent event) throws IOException, SQLException {
         ConfirmAlterButton.setVisible(true);
@@ -84,7 +102,9 @@ public class AreaUtenteController {
             utente.setNome(inputNome.getText());
             utente.setCognome(inputCognome.getText());
             utente.setProfessione(professione.getText());
-
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getVisualBounds().getWidth();
+            double screenHeight = screen.getVisualBounds().getHeight();
             FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
             root = loader.load();
             // Recupera il controller della nuova scena
@@ -93,7 +113,18 @@ public class AreaUtenteController {
                 System.out.println("sono dentro");
                 utente.setChiaveLicenza(controller.getChiave());
                 utenteDAO.modificaUtente(utente);
-                switchScene(event, "/Scene/HomePage.fxml");
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root, screenWidth, screenHeight);
+                stage.setMaximized(true);
+                stage.setScene(scene);
+                stage.show();
+                Platform.runLater(() -> {
+                    try {
+                        controller.caricaCartelle();
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                });
             }
             else {
                 System.out.println("sono fuori");
