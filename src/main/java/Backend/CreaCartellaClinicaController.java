@@ -72,6 +72,7 @@ public class CreaCartellaClinicaController {
         SintomiEMalattieController controller = loader.getController();
 
         // Passa la lista dei sintomi al controller per caricare le checkbox
+        controller.setChiamante("Crea");
         controller.loadSintomiCheckboxes(sintomoList);
         if (nome.getText().isEmpty() || cognome.getText().isEmpty() || telefono.getText().isEmpty() || cfMedico.getText().isEmpty() || cf.getText().isEmpty() || letto.getText().isEmpty()) {
             errorPane.setVisible(true);

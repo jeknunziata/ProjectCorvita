@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -28,9 +29,12 @@ public class SintomiEMalattieController {
     @FXML
     private StackPane malattieStack;
     @FXML
-    private ScrollPane scrollContainer;
+    private Button indietro;
+
+    private int licenza;
 
     private CartellaClinica cartellaClinica;
+    private String chiamante;
 
     private Stage stage;
     private Scene scene;
@@ -54,6 +58,10 @@ public class SintomiEMalattieController {
                 col = 0;
                 row++;
             }
+        }
+        if (chiamante.equals("Modifica")){
+            indietro.setVisible(false);
+
         }
     }
 
@@ -89,12 +97,12 @@ public class SintomiEMalattieController {
         int row = 0;
         int col = 0;
 
-        // Aggiungi le malattie alla griglia
+        // Aggiungi le malattie alla griglia come testo
         for (Malattia m : malattia) {
-            CheckBox checkBox = new CheckBox(m.getNome());
+            javafx.scene.text.Text malattiaText = new javafx.scene.text.Text(m.getNome());
 
-            // Posiziona la checkbox nella griglia
-            malattieGrid.add(checkBox, col, row);
+            // Posiziona il testo nella griglia
+            malattieGrid.add(malattiaText, col, row);
 
             col++;
             if (col == columns) {
@@ -119,6 +127,7 @@ public class SintomiEMalattieController {
         // Aggiungi lo ScrollPane allo StackPane
         malattieStack.getChildren().add(scrollPane);
     }
+
     private void switchScene(ActionEvent event, String fxmlPath) throws IOException {
         System.out.println("Cambio scena a: " + fxmlPath);
         //essendo java buggato ci prendiamo la grandezza dello schermo per mantenere la grandezza massima della finestra
@@ -144,7 +153,7 @@ public class SintomiEMalattieController {
         HomePageController controller = loader.getController();
         List<String> sintomi = getSelectedSintomi();
         SintomiDao sintomiDao = new SintomiDao();
-        sintomiDao.salvaSintomi(cartellaClinica.getID(),sintomi);
+        sintomiDao.salvaSintomi(cartellaClinica.getID(),sintomi,licenza,chiamante);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root, screenWidth, screenHeight);
         stage.setMaximized(true);
@@ -163,5 +172,17 @@ public class SintomiEMalattieController {
 
     public void setCartellaClinica(CartellaClinica cartellaClinica) {
         this.cartellaClinica = cartellaClinica;
+    }
+
+    public void setChiamante(String chiamante) {
+        this.chiamante = chiamante;
+    }
+
+    public String getChiamante() {
+        return chiamante;
+    }
+
+    public void setLicenza(int licenza) {
+        this.licenza = licenza;
     }
 }

@@ -54,8 +54,19 @@ public class StoricoController {
     }
 
     @FXML
-    private void switchHomePage(ActionEvent event) throws IOException {
-        switchScene(event, "/Scene/HomePage.fxml");
+    private void switchHomePage(ActionEvent event) throws IOException, SQLException {
+        Screen screen = Screen.getPrimary();
+        double screenWidth = screen.getVisualBounds().getWidth();
+        double screenHeight = screen.getVisualBounds().getHeight();
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
+        root = loader.load();
+        HomePageController controller = loader.getController();
+        controller.caricaCartelle();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root, screenWidth, screenHeight);
+        stage.setMaximized(true);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

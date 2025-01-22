@@ -4,40 +4,49 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane styleClass="backgroundCartella" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" stylesheets="/VisualizzaCartellaClinica.css">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1536.0" styleClass="backgroundCartella" stylesheets="/VisualizzaCartellaClinica.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.VisualizzaCartellaClinicaController">
 
     <Pane layoutX="50.0" layoutY="50.0" prefHeight="616.0" prefWidth="1436.0" styleClass="cartellaContainer">
 
-        <Text layoutX="690.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Sintomi"/>
-        <Text fx:id="fieldSintomi" layoutX="540.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Sintomi" wrappingWidth="400.0"/>
-        <TextArea fx:id="inputSintomi" focusTraversable="false" layoutX="540.0" layoutY="75.0" prefHeight="240.0" prefWidth="400.0" visible="false" wrapText="true" styleClass="inputCartella"/>
+        <Text layoutX="690.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Sintomi" />
+        <TextArea fx:id="sintomi" editable="false" focusTraversable="false" layoutX="540.0" layoutY="75.0" prefHeight="240.0" prefWidth="400.0" styleClass="inputCartella" wrapText="true" />
 
-        <Text fx:id="fieldNome" layoutX="80.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Nome"/>
-        <TextField fx:id="inputNome" focusTraversable="false" layoutX="80.0" layoutY="40.0" prefHeight="35.0" prefWidth="160.0" promptText="Nome" styleClass="inputCartella" visible="false"/>
+        <Text fx:id="fieldNome" layoutX="80.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Nome:" />
+        <TextField fx:id="inputNome" focusTraversable="false" layoutX="80.0" layoutY="40.0" prefHeight="35.0" prefWidth="160.0" promptText="Nome" styleClass="inputCartella" visible="false" />
 
-        <Text fx:id="fieldCognome" layoutX="270.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Cognome"/>
-        <TextField fx:id="inputCognome" focusTraversable="false" layoutX="270.0" layoutY="40.0" prefHeight="35.0" prefWidth="160.0" promptText="Cognome" styleClass="inputCartella" visible="false"/>
+        <Text fx:id="fieldCognome" layoutX="270.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Cognome:" />
+        <TextField fx:id="inputCognome" focusTraversable="false" layoutX="270.0" layoutY="40.0" prefHeight="35.0" prefWidth="160.0" promptText="Cognome" styleClass="inputCartella" visible="false" />
 
-        <Text fx:id="fieldCF" layoutX="80.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="CFCFCFCFCFCFCFCF"/>
-        <TextField fx:id="inputCF" focusTraversable="false" layoutX="80.0" layoutY="110.0" prefHeight="35.0" prefWidth="260.0" promptText="CF" styleClass="inputCartella" visible="false"/>
+        <Text fx:id="cf" layoutX="80.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="CFCFCFCFCFCFCFCF" />
+        <TextField fx:id="inputCF" focusTraversable="false" layoutX="80.0" layoutY="110.0" prefHeight="35.0" prefWidth="260.0" promptText="CF" styleClass="inputCartella" visible="false" />
 
-        <Text fx:id="fieldTelefono" layoutX="80.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Telefono"/>
-        <TextField fx:id="inputTelefono" focusTraversable="false" layoutX="80.0" layoutY="180.0" prefHeight="35.0" prefWidth="160.0" promptText="Telefono" styleClass="inputCartella" visible="false"/>
+        <Text fx:id="fieldTelefono" layoutX="86.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Telefono:" />
+        <TextField fx:id="inputTelefono" focusTraversable="false" layoutX="80.0" layoutY="180.0" prefHeight="35.0" prefWidth="160.0" promptText="Telefono" styleClass="inputCartella" visible="false" />
 
-        <Text layoutX="1200.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Data Creazione"/>
+        <Text layoutX="1200.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Data Creazione:" />
 
-        <Text fx:id="fieldLetto" layoutX="1200.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Letto"/>
-        <TextField fx:id="inputLetto" focusTraversable="false" layoutX="1200.0" layoutY="110.0" prefHeight="35.0" prefWidth="100.0" promptText="Letto" styleClass="inputCartella" visible="false"/>
+        <Text fx:id="fieldLetto" layoutX="1200.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Letto:" />
+        <TextField fx:id="inputLetto" focusTraversable="false" layoutX="1200.0" layoutY="110.0" prefHeight="35.0" prefWidth="100.0" promptText="Letto" styleClass="inputCartella" visible="false" />
 
-        <Text layoutX="60.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Note"/>
-        <Text fx:id="fieldNote" layoutX="60.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="noteCartellaClinica" text="Note" wrappingWidth="1300.0"/>
-        <TextArea fx:id="inputNote" focusTraversable="false" layoutX="60.0" layoutY="362.0" prefHeight="240.0" prefWidth="1300.0" promptText="Note..." visible="false"/>
+        <Text layoutX="60.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Note" />
+        <TextArea fx:id="note" editable="false" focusTraversable="false" layoutX="60.0" layoutY="362.0" prefHeight="240.0" prefWidth="394.0" promptText="Note..." />
+      <Text fx:id="nome" layoutX="97.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Nome" />
+      <Text fx:id="cognome" layoutX="295.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Cognome" />
+      <Text fx:id="fieldCognome2" layoutX="78.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="CF:" />
+      <Text fx:id="data" layoutX="1225.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Data Creazione:" />
+      <Text fx:id="letto" layoutX="1214.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Letto" />
+      <Text fx:id="telefono" layoutX="110.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="Telefono" />
+      <Button fx:id="modificaSintomi" layoutX="682.0" layoutY="320.0" mnemonicParsing="false" onAction="#modificaSintomi" text="Modifica sintomi" />
+      <Text layoutX="723.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Malattie" />
+      <TextArea fx:id="malattie" editable="false" layoutX="528.0" layoutY="395.0" prefHeight="200.0" prefWidth="443.0" />
+      <Text fx:id="fieldCognome21" layoutX="78.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="CF Medico Curante :" />
+      <Text fx:id="cfMedico" layoutX="94.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="datiCartellaClinica" text="CFCFCFCFCFCFCFCF" />
+      <TextField fx:id="inputCFMedico" layoutX="82.0" layoutY="157.0" promptText="CF Medico Curante" visible="false" />
     </Pane>
 
-    <Button id="changeButton" focusTraversable="false" layoutX="1155.0" layoutY="720.0" mnemonicParsing="false" text="Modifica"/>
-    <Button id="confirmButton" focusTraversable="false" layoutX="1346.0" layoutY="720.0" mnemonicParsing="false" text="Confema" visible="false"/>
+    <Button id="changeButton" focusTraversable="false" layoutX="719.0" layoutY="720.0" mnemonicParsing="false" onAction="#modificaCampi" text="Modifica campi" />
+    <Button id="confirmButton" fx:id="conferma" focusTraversable="false" layoutX="1346.0" layoutY="720.0" mnemonicParsing="false" onAction="#conferma" text="Confema" visible="false" />
+   <Button layoutX="293.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchHomePage" text="Indietro" />
 </Pane>

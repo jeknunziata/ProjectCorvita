@@ -1,6 +1,5 @@
 package Backend;
 
-import Frontend.MainPage;
 import Utils.CartellaClinica;
 import Utils.CartellaClinicaDao;
 import javafx.event.ActionEvent;
@@ -10,7 +9,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -56,15 +54,12 @@ public class HomePageController {
         stage.setScene(scene);
         stage.show();
     }
-
     public void switchVisualizzaCartellaClinica(ActionEvent event) throws IOException {
         switchScene(event,"/Scene/VisualizzaCartellaClinica.fxml" );
     }
-
     public void switchCreaCartellaClinica(ActionEvent event) throws IOException {
         switchScene(event, "/Scene/CreaCartellaClinica.fxml");
     }
-
     public void switchAreaUtente(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/AreaUtente.fxml"));
         root = loader.load();
@@ -128,10 +123,6 @@ public class HomePageController {
         TextField inputField = new TextField();
         Button submitButton = new Button("Inserisci");
         AtomicBoolean isTrovato = new AtomicBoolean(false);
-        //inserisce l'immagine e il titolo nel pop-up
-        Image icona = new Image("logoCorVita.jpeg");
-        popupStage.getIcons().add(icona);
-        popupStage.setTitle("Condividi Cartella");
 
         // Centrare il pulsante
         submitButton.setMaxWidth(Double.MAX_VALUE);
@@ -139,6 +130,7 @@ public class HomePageController {
 
         submitButton.setOnAction(e -> {
             String idCartella = inputField.getText();
+
 
             try {
                 boolean trovato = CartellaClinicaDao.findById(idCartella);
@@ -170,36 +162,7 @@ public class HomePageController {
                         throw new RuntimeException(ex);
                     }
                 }
-
-                // Codice da aggiungere dopo il click sul pulsante OK
-                Screen screen = Screen.getPrimary();
-                double screenWidth = screen.getVisualBounds().getWidth();
-                double screenHeight = screen.getVisualBounds().getHeight();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
-                Parent root = null;
-
-
-                try {
-                    root = loader.load();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                HomePageController controller = loader.getController();
-                try {
-                    controller.caricaCartelle();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root, screenWidth, screenHeight);
-                stage.setMaximized(true);
-                stage.setScene(scene);
-                stage.show();
-
-                //Chiudi il pop-up
-                popupStage.close();
             });
-
 
             alert.showAndWait();
         });
@@ -223,7 +186,7 @@ public class HomePageController {
             AnchorPane pane = new AnchorPane();
             pane.getStyleClass().add("contentPane");
 
-            // Crea e configura le label con i dettagli della cartella
+            // Crea e configura le etichette per i dettagli della cartella
             Label IDLabel = new Label("ID:"+ cartella.getID());
             Label cognomeLabel = new Label("Cognome Paziente: " + cartella.getCognome());
             Label nomeLabel = new Label("Nome Paziente: " + cartella.getNome());
@@ -238,100 +201,27 @@ public class HomePageController {
             lettoLabel.getStyleClass().add("cartellaContentInfo");
             cfLabel.getStyleClass().add("cartellaContentInfo");
 
-            // Crea il bottone per visualizzare la cartella clinica
             Button visualizzaButton = new Button("Visualizza");
             visualizzaButton.getStyleClass().add("modifyButton");
-
             visualizzaButton.setOnAction(event -> {
                 try {
+                    Screen screen = Screen.getPrimary();
+                    double screenWidth = screen.getVisualBounds().getWidth();
+                    double screenHeight = screen.getVisualBounds().getHeight();
                     FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/VisualizzaCartellaClinica.fxml"));
                     root = loader.load();
                     VisualizzaCartellaClinicaController controller = loader.getController();
-                    //controller.caricaCartella(cartella.getID());
-                    switchVisualizzaCartellaClinica(event);
-                } catch (IOException e) {
+                    controller.caricaCartella(cartella.getID(),chiave);
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene = new Scene(root, screenWidth, screenHeight);
+                    stage.setMaximized(true);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
                 }
             });
 
-            // Posiziona gli elementi nel Pane
-            AnchorPane.setTopAnchor(IDLabel, 10.0);
-            AnchorPane.setLeftAnchor(IDLabel, 10.0);
-
-            AnchorPane.setTopAnchor(cognomeLabel, 10.0);
-            AnchorPane.setLeftAnchor(cognomeLabel, 410.0);
-
-            AnchorPane.setTopAnchor(nomeLabel, 10.0);
-            AnchorPane.setLeftAnchor(nomeLabel, 810.0);
-
-            AnchorPane.setTopAnchor(dataLabel, 100.0);
-            AnchorPane.setLeftAnchor(dataLabel, 10.0);
-
-            AnchorPane.setTopAnchor(lettoLabel, 100.0);
-            AnchorPane.setLeftAnchor(lettoLabel, 410.0);
-
-            AnchorPane.setTopAnchor(cfLabel, 100.0);
-            AnchorPane.setLeftAnchor(cfLabel, 810.0);
-
-            AnchorPane.setTopAnchor(visualizzaButton, 190.0);
-            AnchorPane.setLeftAnchor(visualizzaButton, 1200.0);
-
-            // Aggiunge tutte le etichette e il bottone al Pane
-            pane.getChildren().addAll(IDLabel,cognomeLabel, nomeLabel, dataLabel, lettoLabel, cfLabel, visualizzaButton);
-
-            // Aggiunge il Pane al contenitore principale
-            cartelleContainer.getChildren().add(pane);
-        }
-
-        // Associa il VBox al ScrollPane (se non già fatto nel file FXML)
-        scrollPane.setContent(cartelleContainer);
-}
-
-public void ricerca() throws SQLException {
-        String codiceFiscale = barraDiRicerca.getText();
-
-    CartellaClinicaDao cartellaClinicaDao = new CartellaClinicaDao();
-    List<CartellaClinica> cartelle = cartellaClinicaDao.cercaPerCF(codiceFiscale); // Metodo che restituisce le cartelle
-
-    // Pulisce il contenitore prima di caricare nuovi dati
-    cartelleContainer.getChildren().clear();
-
-    for (CartellaClinica cartella : cartelle) {
-
-        AnchorPane pane = new AnchorPane();
-        pane.getStyleClass().add("contentPane");
-
-
-        Label IDLabel = new Label("ID:"+ cartella.getID());
-        Label cognomeLabel = new Label("Cognome Paziente: " + cartella.getCognome());
-        Label nomeLabel = new Label("Nome Paziente: " + cartella.getNome());
-        Label dataLabel = new Label("Data Creazione: " + cartella.getData_modifica());
-        Label lettoLabel = new Label("Letto: " + cartella.getLetto());
-        Label cfLabel = new Label("CF: " + cartella.getCF());
-
-        IDLabel.getStyleClass().add("cartellaContentInfo");
-        cognomeLabel.getStyleClass().add("cartellaContentInfo");
-        nomeLabel.getStyleClass().add("cartellaContentInfo");
-        dataLabel.getStyleClass().add("cartellaContentInfo");
-        lettoLabel.getStyleClass().add("cartellaContentInfo");
-        cfLabel.getStyleClass().add("cartellaContentInfo");
-
-        Button visualizzaButton = new Button("Visualizza");
-        visualizzaButton.getStyleClass().add("modifyButton");
-
-        visualizzaButton.setOnAction(event -> {
-            try {
-                FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/VisualizzaCartellaClinica.fxml"));
-                root = loader.load();
-                VisualizzaCartellaClinicaController controller = loader.getController();
-                //controller.caricaCartella(cartella.getID());
-                switchVisualizzaCartellaClinica(event);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-            // Posiziona gli elementi nel Pane
             AnchorPane.setTopAnchor(IDLabel, 10.0);
             AnchorPane.setLeftAnchor(IDLabel, 10.0);
 
@@ -364,6 +254,92 @@ public void ricerca() throws SQLException {
     scrollPane.setContent(cartelleContainer);
 
 }
+    public void ricerca() throws SQLException {
+        String codiceFiscale = barraDiRicerca.getText();
+
+        CartellaClinicaDao cartellaClinicaDao = new CartellaClinicaDao();
+        List<CartellaClinica> cartelle = cartellaClinicaDao.cercaPerCF(codiceFiscale); // Metodo che restituisce le cartelle
+
+        // Pulisce il contenitore prima di caricare nuovi dati
+        cartelleContainer.getChildren().clear();
+
+        for (CartellaClinica cartella : cartelle) {
+
+            AnchorPane pane = new AnchorPane();
+            pane.getStyleClass().add("contentPane");
+
+
+            Label IDLabel = new Label("ID:"+ cartella.getID());
+            Label cognomeLabel = new Label("Cognome Paziente: " + cartella.getCognome());
+            Label nomeLabel = new Label("Nome Paziente: " + cartella.getNome());
+            Label dataLabel = new Label("Data Creazione: " + cartella.getData_modifica());
+            Label lettoLabel = new Label("Letto: " + cartella.getLetto());
+            Label cfLabel = new Label("CF: " + cartella.getCF());
+
+            IDLabel.getStyleClass().add("cartellaContentInfo");
+            cognomeLabel.getStyleClass().add("cartellaContentInfo");
+            nomeLabel.getStyleClass().add("cartellaContentInfo");
+            dataLabel.getStyleClass().add("cartellaContentInfo");
+            lettoLabel.getStyleClass().add("cartellaContentInfo");
+            cfLabel.getStyleClass().add("cartellaContentInfo");
+
+            Button visualizzaButton = new Button("Visualizza");
+            visualizzaButton.getStyleClass().add("modifyButton");
+
+            visualizzaButton.setOnAction(event -> {
+                try {
+                    Screen screen = Screen.getPrimary();
+                    double screenWidth = screen.getVisualBounds().getWidth();
+                    double screenHeight = screen.getVisualBounds().getHeight();
+                    FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/VisualizzaCartellaClinica.fxml"));
+                    root = loader.load();
+                    VisualizzaCartellaClinicaController controller = loader.getController();
+                    controller.caricaCartella(cartella.getID(),chiave);
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene = new Scene(root, screenWidth, screenHeight);
+                    stage.setMaximized(true);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+            // Posiziona gli elementi nel Pane
+            AnchorPane.setTopAnchor(IDLabel, 10.0);
+            AnchorPane.setLeftAnchor(IDLabel, 10.0);
+
+            AnchorPane.setTopAnchor(cognomeLabel, 10.0);
+            AnchorPane.setLeftAnchor(cognomeLabel, 410.0);
+
+            AnchorPane.setTopAnchor(nomeLabel, 10.0);
+            AnchorPane.setLeftAnchor(nomeLabel, 810.0);
+
+            AnchorPane.setTopAnchor(dataLabel, 100.0);
+            AnchorPane.setLeftAnchor(dataLabel, 10.0);
+
+            AnchorPane.setTopAnchor(lettoLabel, 100.0);
+            AnchorPane.setLeftAnchor(lettoLabel, 410.0);
+
+            AnchorPane.setTopAnchor(cfLabel, 100.0);
+            AnchorPane.setLeftAnchor(cfLabel, 810.0);
+
+            AnchorPane.setTopAnchor(visualizzaButton, 180.0);
+            AnchorPane.setLeftAnchor(visualizzaButton, 1200.0);
+
+            // Aggiunge tutte le etichette e il bottone al Pane
+            pane.getChildren().addAll(IDLabel,cognomeLabel, nomeLabel, dataLabel, lettoLabel, cfLabel, visualizzaButton);
+
+            // Aggiunge il Pane al contenitore principale
+            cartelleContainer.getChildren().add(pane);
+        }
+
+        // Associa il VBox al ScrollPane (se non già fatto nel file FXML)
+        scrollPane.setContent(cartelleContainer);
+
+    }
 
 //questo metodo sfrutta il metodo 'caricaCartelle' dove al click del pulsante 'RESET' mi ricarica tutte le cartelle cliniche presenti nel db
 public void resettaCartelle(ActionEvent event) throws SQLException {

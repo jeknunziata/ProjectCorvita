@@ -9,12 +9,14 @@ import java.util.List;
 public class CartellaClinicaDao {
 
     public List<CartellaClinica> getCartelle(int chiave) throws SQLException {
-        List<CartellaClinica> cartellaClinica = new ArrayList<>();
-        String query = "SELECT * " +
+        List<CartellaClinica> cartellaClinicaList = new ArrayList<>();
+        String query = "SELECT DISTINCT CartellaClinica.ID_CartellaClinica, CartellaClinica.CF_Paziente, CartellaClinica.Nome_paziente, " +
+                "CartellaClinica.Cognome_paziente, CartellaClinica.Telefono, CartellaClinica.numero_letto, CartellaClinica.CF_Medico_Curante, " +
+                "CartellaClinica.Data_creazione, CartellaClinica.Note " +
                 "FROM Storico " +
-                "JOIN CartellaClinica " +
-                "ON Storico.ID_CartellaClinica = CartellaClinica.ID_CartellaClinica " +
+                "JOIN CartellaClinica ON Storico.ID_CartellaClinica = CartellaClinica.ID_CartellaClinica " +
                 "WHERE ChiaveLicenza = ?";
+
         try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
             // Imposta il valore del parametro nella query
             preparedStatement.setInt(1, chiave);
@@ -33,12 +35,13 @@ public class CartellaClinicaDao {
                     cartella.setData_modifica(resultSet.getDate("Data_creazione"));
                     cartella.setNote(resultSet.getString("Note"));
                     cartella.setID(resultSet.getInt("ID_CartellaClinica"));
-                    cartellaClinica.add(cartella);
+                    cartellaClinicaList.add(cartella);
                 }
             }
         }
-        return cartellaClinica;
+        return cartellaClinicaList;
     }
+
 
     public CartellaClinica setCartella(CartellaClinica cartella,int chiave) throws SQLException {
         String query = "INSERT INTO CartellaClinica (CF_Paziente, Nome_paziente, Cognome_paziente, Telefono, numero_letto, CF_Medico_Curante, Data_creazione, Note) " +
@@ -97,6 +100,35 @@ public class CartellaClinicaDao {
 
 
     }
+    public CartellaClinica getCartella(int chiave) throws SQLException {
+        CartellaClinica cartellaClinica = null;
+        String query = "SELECT * " +
+                "FROM CartellaClinica " +
+                "WHERE ID_CartellaClinica = ?";
+        try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
+            // Imposta il valore del parametro nella query
+            preparedStatement.setInt(1, chiave);
+
+            // Esegui la query
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // Controlla se ci sono risultati
+                if (resultSet.next()) {
+                    cartellaClinica = new CartellaClinica();
+                    cartellaClinica.setCF(resultSet.getString("CF_Paziente"));
+                    cartellaClinica.setNome(resultSet.getString("Nome_paziente"));
+                    cartellaClinica.setCognome(resultSet.getString("Cognome_paziente"));
+                    cartellaClinica.setTelefone(resultSet.getString("Telefono"));
+                    cartellaClinica.setLetto(resultSet.getInt("numero_letto"));
+                    cartellaClinica.setCF_MedicoCurante(resultSet.getString("CF_Medico_Curante"));
+                    cartellaClinica.setData_modifica(resultSet.getDate("Data_creazione"));
+                    cartellaClinica.setNote(resultSet.getString("Note"));
+                    cartellaClinica.setID(resultSet.getInt("ID_CartellaClinica"));
+                }
+            }
+        }
+        return cartellaClinica;
+    }
+
 
 
     //metodo che mi stabilisce se l'id inserito nel pop-up è presente tra le cartelle cliniche o meno
@@ -124,6 +156,47 @@ public class CartellaClinicaDao {
             preparedStatement.setTimestamp(3, new java.sql.Timestamp(new java.util.Date().getTime())); // Usa Timestamp
             preparedStatement.setString(4, "Condivisione");
             preparedStatement.executeUpdate();
+        }
+    }
+    public void modificaCartella(CartellaClinica cartella, int chiaveLicenza) throws SQLException {
+        // Query per aggiornare la cartella clinica
+        String updateQuery = "UPDATE CartellaClinica " +
+                "SET CF_Paziente = ?, Nome_paziente = ?, Cognome_paziente = ?, Telefono = ?, numero_letto = ?, CF_Medico_Curante = ?, Data_creazione = ?, Note = ? " +
+                "WHERE ID_CartellaClinica = ?";
+
+        try (PreparedStatement updateStmt = JDBC.getConnection().prepareStatement(updateQuery)) {
+            updateStmt.setString(1, cartella.getCF());
+            updateStmt.setString(2, cartella.getNome());
+            updateStmt.setString(3, cartella.getCognome());
+            updateStmt.setString(4, cartella.getTelefone());
+            updateStmt.setInt(5, cartella.getLetto());
+            updateStmt.setString(6, cartella.getCF_MedicoCurante());
+            updateStmt.setDate(7, new java.sql.Date(cartella.getData_modifica().getTime()));
+            updateStmt.setString(8, cartella.getNote());
+            updateStmt.setInt(9, cartella.getID());
+
+            // Esegui l'aggiornamento
+            updateStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+
+        // Query per inserire il record nello storico
+        String insertStoricoQuery = "INSERT INTO Storico (ID_CartellaClinica, ChiaveLicenza, data_modifica, note) " +
+                "VALUES (?, ?, ?, ?)";
+
+        try (PreparedStatement storicoStmt = JDBC.getConnection().prepareStatement(insertStoricoQuery)) {
+            storicoStmt.setInt(1, cartella.getID());
+            storicoStmt.setInt(2, chiaveLicenza);
+            storicoStmt.setTimestamp(3, new java.sql.Timestamp(new java.util.Date().getTime())); // Data odierna
+            storicoStmt.setString(4, "Modifica");
+
+            // Esegui l'inserimento
+            storicoStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
         }
     }
 
