@@ -20,7 +20,7 @@
       <Button focusTraversable="false" layoutX="993.0" layoutY="22.0" mnemonicParsing="false" onAction="#aggiungiCartellaClinica" prefHeight="50.0" prefWidth="150.0" styleClass="navBarButton" text="Condividi Cartella" />
       <Button focusTraversable="false" layoutX="1198.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchAreaUtente" prefHeight="50.0" prefWidth="150.0" styleClass="navBarButton" text="Area Utente" />
 
-      <Button fx:id="exitButton" focusTraversable="false" layoutX="1416.0" layoutY="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Esci" />
+      <Button fx:id="exitButton" focusTraversable="false" layoutX="1416.0" layoutY="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" onAction="#logout" text="Esci" />
 
    </Pane>
 
