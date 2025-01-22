@@ -1,5 +1,5 @@
-backgroundCartella{
-
+.backgroundCartella{
+    -fx-background-color: #7fdbd4;
 }
 
 .cartellaContainer{
@@ -11,11 +11,13 @@ backgroundCartella{
     -fx-font-family: Verdana;
     -fx-font-size: 24px;
     -fx-fill: #0B3953;
+    -fx-effect: dropshadow(gaussian, white, 6, 0.5, 0, 0);
 }
 
 .inputCartella, .noteCartellaClinica{
     -fx-font-family: Verdana;
-    -fx-font-size: 16px;
+    -fx-font-size: 24px;
+    -fx-text-fill: #0B3953;
 }
 
 .button{
@@ -23,10 +25,10 @@ backgroundCartella{
     -fx-font-size: 24px;
 }
 
-.changeButton{
+.utilButton{
     -fx-text-fill: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 53.9823% 50.7576%, radius 92.2018%, #0b3954 0.0%, #7fdbd4 64.428%, #0b3954 100.0%);
 }
 
-#confirmButton{
+#conferma{
     -fx-text-fill:  radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 53.9823% 50.7576%, radius 92.2018%, #017a79 0.0%, #017a79 0.6729%, #ffc857 0.6729%, #898989 100.0%);
 }

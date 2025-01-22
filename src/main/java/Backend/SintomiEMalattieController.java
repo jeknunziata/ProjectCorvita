@@ -100,6 +100,7 @@ public class SintomiEMalattieController {
         // Aggiungi le malattie alla griglia come testo
         for (Malattia m : malattia) {
             javafx.scene.text.Text malattiaText = new javafx.scene.text.Text(m.getNome());
+            malattiaText.getStyleClass().add("malattiaName");
 
             // Posiziona il testo nella griglia
             malattieGrid.add(malattiaText, col, row);
