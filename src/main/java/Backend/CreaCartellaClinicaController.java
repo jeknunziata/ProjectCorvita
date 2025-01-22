@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -83,7 +84,7 @@ public class CreaCartellaClinicaController {
             cc.setLetto( Integer.parseInt(letto.getText()));
             cc.setNote(note.getText());
             cc.setCF(cf.getText());
-            cc.setData_modifica(new Date());
+            cc.setData_modifica(new Timestamp(new Date().getTime()));
             cc.setCF_MedicoCurante(cfMedico.getText());
             cc.setTelefone(telefono.getText());
             CartellaClinica cc2;

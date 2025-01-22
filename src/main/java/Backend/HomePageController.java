@@ -58,6 +58,11 @@ public class HomePageController {
         switchScene(event,"/Scene/VisualizzaCartellaClinica.fxml" );
     }
     public void switchCreaCartellaClinica(ActionEvent event) throws IOException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/CreaCartellaClinica.fxml"));
+        root = loader.load();
+        CreaCartellaClinicaController controller = loader.getController();
+        controller.setChiave(chiave);
+
         switchScene(event, "/Scene/CreaCartellaClinica.fxml");
     }
     public void switchAreaUtente(ActionEvent event) throws IOException, SQLException {
@@ -161,6 +166,26 @@ public class HomePageController {
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
+                }
+                popupStage.close();
+
+                // Aggiungi qui il codice per caricare la nuova scena
+                Screen screen = Screen.getPrimary();
+                double screenWidth = screen.getVisualBounds().getWidth();
+                double screenHeight = screen.getVisualBounds().getHeight();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
+                Parent root;
+                try {
+                    root = loader.load();
+                    HomePageController controller = loader.getController();
+                    controller.caricaCartelle();
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root, screenWidth, screenHeight);
+                    stage.setMaximized(true);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException | SQLException ex) {
+                    ex.printStackTrace();
                 }
             });
 

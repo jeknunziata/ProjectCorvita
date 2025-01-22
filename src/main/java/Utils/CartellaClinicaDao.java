@@ -3,6 +3,7 @@ package Utils;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,8 @@ public class CartellaClinicaDao {
     public CartellaClinica setCartella(CartellaClinica cartella,int chiave) throws SQLException {
         String query = "INSERT INTO CartellaClinica (CF_Paziente, Nome_paziente, Cognome_paziente, Telefono, numero_letto, CF_Medico_Curante, Data_creazione, Note) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        long currentTimeMillis = System.currentTimeMillis();
+        Timestamp date = new Timestamp((currentTimeMillis /1000)*1000);
         try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
             preparedStatement.setString(1, cartella.getCF());
             preparedStatement.setString(2, cartella.getNome());
@@ -53,7 +56,7 @@ public class CartellaClinicaDao {
             preparedStatement.setString(4, cartella.getTelefone());
             preparedStatement.setInt(5, cartella.getLetto());
             preparedStatement.setString(6, cartella.getCF_MedicoCurante());
-            preparedStatement.setDate(7, new java.sql.Date(cartella.getData_modifica().getTime()));
+            preparedStatement.setTimestamp(7, date); // Usa Timestamp
             preparedStatement.setString(8, cartella.getNote());
 
             preparedStatement.executeUpdate();
@@ -62,7 +65,7 @@ public class CartellaClinicaDao {
             e.printStackTrace();
             throw e;
         }
-        String query2 = "select ID_CartellaClinica from CartellaClinica where CF_Paziente = ? and Nome_paziente = ? and Cognome_paziente = ? and Telefono = ? and numero_letto = ? and CF_Medico_Curante = ? and Data_creazione = ? and Note = ?";
+        String query2 = "select ID_CartellaClinica from CartellaClinica where CF_Paziente = ? and Nome_paziente = ? and Cognome_paziente = ? and Telefono = ? and numero_letto = ? and CF_Medico_Curante = ? and Note = ? and Data_creazione = ?";
         try (PreparedStatement preparedStatement2 = JDBC.getConnection().prepareStatement(query2)) {
             preparedStatement2.setString(1, cartella.getCF());
             preparedStatement2.setString(2, cartella.getNome());
@@ -70,23 +73,23 @@ public class CartellaClinicaDao {
             preparedStatement2.setString(4, cartella.getTelefone());
             preparedStatement2.setInt(5, cartella.getLetto());
             preparedStatement2.setString(6, cartella.getCF_MedicoCurante());
-            preparedStatement2.setDate(7, new java.sql.Date(cartella.getData_modifica().getTime()));
-            preparedStatement2.setString(8, cartella.getNote());
+            preparedStatement2.setString(7, cartella.getNote());
+            preparedStatement2.setTimestamp(8, date);
 
 
-                try (ResultSet resultSet = preparedStatement2.executeQuery();) {
-                    resultSet.next();
-                    cartella.setID(resultSet.getInt("ID_CartellaClinica"));
+            try (ResultSet resultSet = preparedStatement2.executeQuery();) {
+                resultSet.next();
+                cartella.setID(resultSet.getInt("ID_CartellaClinica"));
 
 
-                }
+            }
         }
         String query3 = "INSERT INTO Storico (ID_CartellaClinica, ChiaveLicenza, data_modifica, note) " +
                 "VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query3)) {
             preparedStatement.setInt(1, cartella.getID());
             preparedStatement.setInt(2, chiave);
-            preparedStatement.setDate(3, new java.sql.Date(cartella.getData_modifica().getTime()));
+            preparedStatement.setTimestamp(3, date); // Usa Timestamp
             preparedStatement.setString(4,"Creazione");
 
 
@@ -171,7 +174,7 @@ public class CartellaClinicaDao {
             updateStmt.setString(4, cartella.getTelefone());
             updateStmt.setInt(5, cartella.getLetto());
             updateStmt.setString(6, cartella.getCF_MedicoCurante());
-            updateStmt.setDate(7, new java.sql.Date(cartella.getData_modifica().getTime()));
+            updateStmt.setTimestamp(7, new java.sql.Timestamp(new java.util.Date().getTime())); // Usa Timestamp
             updateStmt.setString(8, cartella.getNote());
             updateStmt.setInt(9, cartella.getID());
 
@@ -229,4 +232,3 @@ public class CartellaClinicaDao {
     }
 
 }
-

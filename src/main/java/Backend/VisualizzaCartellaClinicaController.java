@@ -19,7 +19,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class VisualizzaCartellaClinicaController {
@@ -192,7 +194,7 @@ public class VisualizzaCartellaClinicaController {
         cartella.setLetto(Integer.parseInt(inputLetto.getText()));
         cartella.setNote(note.getText());
         cartella.setCF_MedicoCurante(inputCFMedico.getText());
-        cartella.setData_modifica(new java.util.Date());
+        cartella.setData_modifica(new Timestamp(System.currentTimeMillis()));
         cartella.setID(idCartellaClinica);
 
         // Modifica la cartella nel database
