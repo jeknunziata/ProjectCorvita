@@ -1,0 +1,36 @@
+.backgroundStorico{
+    -fx-background-color: #7fdbd4;;
+}
+
+.title{
+    -fx-stroke-type: outside;
+    -fx-font-size: 32px;
+    -fx-font-family: Verdana;
+    -fx-fill: #0B3953;
+    -fx-effect: dropshadow(gaussian, white, 6, 0.5, 0, 0);
+}
+
+.backButton{
+    -fx-text-fill: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 53.9823% 50.7576%, radius 92.2018%, #0b3954 0.0%, #7fdbd4 64.428%, #0b3954 100.0%);
+    -fx-font-size: 24px;
+    -fx-font-family: Verdana;
+}
+
+.visualButton{
+    -fx-text-fill:  radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 53.9823% 50.7576%, radius 92.2018%, #017a79 0.0%, #017a79 0.6729%, #ffc857 0.6729%, #898989 100.0%);
+    -fx-font-size: 16px;
+    -fx-font-family: Verdana;
+}
+
+#listView .list-cell {
+    -fx-padding: 10;
+    -fx-background-color: #bfbcbc;
+    -fx-border-color: black;
+}
+
+#listView .list-cell:filled {
+    -fx-font-size: 14px;
+    -fx-font-family: Verdana;
+    -fx-background-color: white;
+    -fx-text-fill: #0B3953;
+}

@@ -23,3 +23,9 @@
 #CodiceLogin {
     -fx-font-size: 24px;
 }
+
+#errorText{
+    -fx-font-family: Verdana;
+    -fx-font-size: 24px;
+    -fx-fill: red;
+}

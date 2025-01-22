@@ -23,34 +23,29 @@
     -fx-font-size: 14px;
 }
 
+#cartelleContainer{
+    -fx-alignment: top-left;
+    -fx-spacing: 10px;
+    -fx-padding: 10px;
+}
+
 .contentPane {
     -fx-border-color: black;
     -fx-background-color: #7fdbd4;
     -fx-border-radius: 1%;
+    -fx-padding: 10;
 }
 
-.cartellaContentInfoOut{
+.cartellaContentInfo{
     -fx-text-fill: #0B3953;
-    -fx-border-color: black;
-    -fx-background-color: white;
+    -fx-font-weight: bold;
     -fx-font-family: Verdana;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
 }
 
 .modifyButton{
     -fx-text-fill: #A6D5C1;
     -fx-font-family: Verdana;
     -fx-font-size: 14px;
-}
-
-.contentSubPane{
-    -fx-border-color: black;
-    -fx-background-color: white;
-}
-
-.cartellaContentInfo{
-    -fx-fill: #0b3953;
-    -fx-effect: dropshadow(gaussian, #A6D5C1, 10, 0.5, 0, 0);
-    -fx-font-family: Verdana;
-    -fx-font-size: 14px;
+    -fx-focus-traversable: false;
 }

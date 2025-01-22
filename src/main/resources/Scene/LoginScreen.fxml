@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <StackPane prefHeight="816.0" prefWidth="1536.0" stylesheets="/LoginScreen.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.LoginController">
@@ -17,10 +16,6 @@
       <Button layoutX="500.0" layoutY="440.0" mnemonicParsing="false" onAction="#switchMain" styleClass="back-button" text="Torna indietro" />
       <Button fx:id="LoginButton" layoutX="900.0" layoutY="440.0" mnemonicParsing="false" onAction="#login" prefWidth="120.0" text="Login" />
       <PasswordField fx:id="CodiceLogin" layoutX="465.0" layoutY="300.0" onKeyPressed="#handleKeyPress" prefHeight="50.0" prefWidth="600.0" promptText="Inserire il proprio codice" />
-      <Text fx:id="errorText" fill="RED" layoutX="490.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="error" visible="false" wrappingWidth="339.68865966796875">
-         <font>
-            <Font name="Verdana" size="24.0" />
-         </font>
-      </Text>
+      <Text fx:id="errorText" layoutX="640.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="error" visible="false" wrappingWidth="339.68865966796875"/>
    </Pane>
 </StackPane>
