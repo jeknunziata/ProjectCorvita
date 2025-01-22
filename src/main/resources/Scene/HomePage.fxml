@@ -14,12 +14,13 @@
       <Button focusTraversable="false" layoutX="31.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchCreaCartellaClinica" prefHeight="50.0" prefWidth="180.0" styleClass="navBarButton" text="Crea nuova cartella" />
       <Button focusTraversable="false" layoutX="268.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchStorico" prefHeight="50.0" prefWidth="120.0" styleClass="navBarButton" text="Storico" />
 
-      <TextField focusTraversable="false" layoutX="563.0" layoutY="22.0" prefHeight="50.0" prefWidth="380.0" promptText="Cerca" styleClass="searchBar" />
+      <TextField fx:id="barraDiRicerca" focusTraversable="false" layoutX="563.0" layoutY="22.0" onAction="#ricerca" prefHeight="50.0" prefWidth="380.0" promptText="Cerca CF del paziente..." styleClass="searchBar" />
 
       <Button focusTraversable="false" layoutX="993.0" layoutY="22.0" mnemonicParsing="false" onAction="#aggiungiCartellaClinica" prefHeight="50.0" prefWidth="150.0" styleClass="navBarButton" text="Condividi Cartella" />
       <Button focusTraversable="false" layoutX="1198.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchAreaUtente" prefHeight="50.0" prefWidth="150.0" styleClass="navBarButton" text="Area Utente" />
 
       <Button fx:id="exitButton" focusTraversable="false" layoutX="1416.0" layoutY="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Esci" />
+      <Button focusTraversable="false" layoutX="407.0" layoutY="22.0" mnemonicParsing="false" onAction="#resettaCartelle" prefHeight="50.0" prefWidth="120.0" styleClass="navBarButton" text="RESET" />
 
    </Pane>
 

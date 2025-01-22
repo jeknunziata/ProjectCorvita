@@ -127,5 +127,33 @@ public class CartellaClinicaDao {
         }
     }
 
+    //metodo di ricerca del CF del paziente in base cf inserito nella barra di ricerca del home page
+    public List<CartellaClinica> cercaPerCF(String codiceFiscale) throws SQLException{
+        List<CartellaClinica> cartellaCliniche = new ArrayList<>();
+        String query = "SELECT * FROM CartellaClinica WHERE CF_Paziente = ?";
+
+        try(PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
+            preparedStatement.setString(1, codiceFiscale);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    CartellaClinica cartella = new CartellaClinica();
+
+                    cartella.setID(resultSet.getInt("ID_CartellaClinica"));
+                    cartella.setLetto(resultSet.getInt("numero_letto"));
+                    cartella.setCF(resultSet.getString("CF_Paziente"));
+                    cartella.setData_modifica(resultSet.getDate("Data_creazione"));
+                    cartella.setNome(resultSet.getString("Nome_paziente"));
+                    cartella.setCognome(resultSet.getString("Cognome_paziente"));
+                    cartella.setCF_MedicoCurante(resultSet.getString("CF_Medico_Curante"));
+                    cartella.setNote(resultSet.getString("Note"));
+                    cartella.setTelefone(resultSet.getString("Telefono"));
+                    cartellaCliniche.add(cartella);
+                }
+            }
+        }
+        return cartellaCliniche;
+    }
+
 }
 
