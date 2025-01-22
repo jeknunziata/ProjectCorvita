@@ -32,6 +32,7 @@ public class VisualizzaCartellaClinicaController {
     private int idCartellaClinica;// Variabile per salvare l'ID della cartella
     private static int licenza;
     private CartellaClinica cartellaClinica;
+    private String professione;
 
     @FXML
     private Text nome;
@@ -158,68 +159,115 @@ public class VisualizzaCartellaClinicaController {
         } else {
             malattie.setText("Nessuna malattia associata.");
         }
+        if (professione.equals("Paramedico")){
+            modificaSintomi.setDisable(true);
+        }
     }
 
     public void modificaCampi(ActionEvent event) throws IOException, SQLException {
-        nome.setVisible(false);
-        cognome.setVisible(false);
-        telefono.setVisible(false);
-        cf.setVisible(false);
-        letto.setVisible(false);
-        cfMedico.setVisible(false);
-        note.setEditable(true);
-        inputCF.setVisible(true);
-        inputCognome.setVisible(true);
-        inputTelefono.setVisible(true);
-        inputLetto.setVisible(true);
-        inputNome.setVisible(true);
-        inputCFMedico.setVisible(true);
-        conferma.setVisible(true);
-        modificaSintomi.setVisible(false);
-    }
-    public void conferma(ActionEvent event) throws IOException, SQLException {
-        if (inputNome.getText().isEmpty() || inputCognome.getText().isEmpty() ||
-                inputTelefono.getText().isEmpty() || inputCF.getText().isEmpty() ||
-                inputLetto.getText().isEmpty() || inputCFMedico.getText().isEmpty()) {
-            System.out.println("Tutti i campi devono essere compilati.");
-            return;
+        if (professione.equals("Paramedico")){
+            note.setEditable(true);
+            conferma.setVisible(true);
+        }
+        else {
+            nome.setVisible(false);
+            cognome.setVisible(false);
+            telefono.setVisible(false);
+            cf.setVisible(false);
+            letto.setVisible(false);
+            cfMedico.setVisible(false);
+            note.setEditable(true);
+            inputCF.setVisible(true);
+            inputCognome.setVisible(true);
+            inputTelefono.setVisible(true);
+            inputLetto.setVisible(true);
+            inputNome.setVisible(true);
+            inputCFMedico.setVisible(true);
+            conferma.setVisible(true);
+            modificaSintomi.setVisible(false);
         }
 
-        // Crea l'oggetto CartellaClinica con i nuovi valori
-        CartellaClinica cartella = new CartellaClinica();
-        cartella.setNome(inputNome.getText());
-        cartella.setCognome(inputCognome.getText());
-        cartella.setTelefone(inputTelefono.getText());
-        cartella.setCF(inputCF.getText());
-        cartella.setLetto(Integer.parseInt(inputLetto.getText()));
-        cartella.setNote(note.getText());
-        cartella.setCF_MedicoCurante(inputCFMedico.getText());
-        cartella.setData_modifica(new Timestamp(System.currentTimeMillis()));
-        cartella.setID(idCartellaClinica);
-
-        // Modifica la cartella nel database
-        CartellaClinicaDao dao = new CartellaClinicaDao();
-        dao.modificaCartella(cartella, licenza);
-
-        System.out.println("Modifica confermata e salvata nel database.");
-        Screen screen = Screen.getPrimary();
-        double screenWidth = screen.getVisualBounds().getWidth();
-        double screenHeight = screen.getVisualBounds().getHeight();
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
-        root = loader.load();
-        HomePageController controller = loader.getController();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root, screenWidth, screenHeight);
-        stage.setMaximized(true);
-        stage.setScene(scene);
-        stage.show();
-        Platform.runLater(() -> {
-            try {
-                controller.caricaCartelle();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
+    }
+    public void conferma(ActionEvent event) throws IOException, SQLException {
+        if (!professione.equals("Paramedico")){
+            if (inputNome.getText().isEmpty() || inputCognome.getText().isEmpty() ||
+                    inputTelefono.getText().isEmpty() || inputCF.getText().isEmpty() ||
+                    inputLetto.getText().isEmpty() || inputCFMedico.getText().isEmpty()) {
+                System.out.println("Tutti i campi devono essere compilati.");
+                return;
             }
-        });
+            // Crea l'oggetto CartellaClinica con i nuovi valori
+            CartellaClinica cartella = new CartellaClinica();
+            cartella.setNome(inputNome.getText());
+            cartella.setCognome(inputCognome.getText());
+            cartella.setTelefone(inputTelefono.getText());
+            cartella.setCF(inputCF.getText());
+            cartella.setLetto(Integer.parseInt(inputLetto.getText()));
+            cartella.setNote(note.getText());
+            cartella.setCF_MedicoCurante(inputCFMedico.getText());
+            cartella.setData_modifica(new Timestamp(System.currentTimeMillis()));
+            cartella.setID(idCartellaClinica);
+
+            // Modifica la cartella nel database
+            CartellaClinicaDao dao = new CartellaClinicaDao();
+            dao.modificaCartella(cartella, licenza);
+
+            System.out.println("Modifica confermata e salvata nel database.");
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getVisualBounds().getWidth();
+            double screenHeight = screen.getVisualBounds().getHeight();
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
+            root = loader.load();
+            HomePageController controller = loader.getController();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root, screenWidth, screenHeight);
+            stage.setMaximized(true);
+            stage.setScene(scene);
+            stage.show();
+            Platform.runLater(() -> {
+                try {
+                    controller.caricaCartelle();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            });
+        }
+        else {
+            CartellaClinica cartella = new CartellaClinica();
+            cartella.setNome(nome.getText());
+            cartella.setCognome(cognome.getText());
+            cartella.setTelefone(telefono.getText());
+            cartella.setCF(cf.getText());
+            cartella.setLetto(Integer.parseInt(letto.getText()));
+            cartella.setNote(note.getText());
+            cartella.setCF_MedicoCurante(cfMedico.getText());
+            cartella.setData_modifica(new Timestamp(System.currentTimeMillis()));
+            cartella.setID(idCartellaClinica);
+
+            // Modifica la cartella nel database
+            CartellaClinicaDao dao = new CartellaClinicaDao();
+            dao.modificaCartella(cartella, licenza);
+
+            System.out.println("Modifica confermata e salvata nel database.");
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getVisualBounds().getWidth();
+            double screenHeight = screen.getVisualBounds().getHeight();
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/HomePage.fxml"));
+            root = loader.load();
+            HomePageController controller = loader.getController();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root, screenWidth, screenHeight);
+            stage.setMaximized(true);
+            stage.setScene(scene);
+            stage.show();
+            Platform.runLater(() -> {
+                try {
+                    controller.caricaCartelle();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            });
+        }
 
     }
     public void modificaSintomi(ActionEvent event) throws IOException, SQLException {
@@ -245,4 +293,7 @@ public class VisualizzaCartellaClinicaController {
         stage.show();
     }
 
+    public void setProfessione(String professione) {
+        this.professione = professione;
+    }
 }

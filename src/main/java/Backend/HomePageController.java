@@ -2,6 +2,8 @@ package Backend;
 
 import Utils.CartellaClinica;
 import Utils.CartellaClinicaDao;
+import Utils.Utente;
+import Utils.UtenteDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,10 +26,13 @@ public class HomePageController {
 
     @FXML
     Pane topPane;
+    @FXML
+    private Button creaCartella;
 
     @FXML
     Label nomeUtenteLabel;
     private static int chiave;
+    private String professione;
 
     private Stage stage;
     private Scene scene;
@@ -53,9 +58,6 @@ public class HomePageController {
         stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
-    }
-    public void switchVisualizzaCartellaClinica(ActionEvent event) throws IOException {
-        switchScene(event,"/Scene/VisualizzaCartellaClinica.fxml" );
     }
     public void switchCreaCartellaClinica(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/CreaCartellaClinica.fxml"));
@@ -89,9 +91,6 @@ public class HomePageController {
         switchScene(event, "/Scene/StoricoPage.fxml");
     }
 
-    public void displayName(String username) {
-        nomeUtenteLabel.setText(username);
-    }
 
     //metodo per la conferma dell'uscita tramite l'apposito bottone
     public void logout(ActionEvent event) {
@@ -201,7 +200,14 @@ public class HomePageController {
     public void caricaCartelle() throws SQLException {
         // Inizializza il DAO per recuperare le cartelle cliniche
         CartellaClinicaDao cartellaClinicaDao = new CartellaClinicaDao();
-        List<CartellaClinica> cartelle = cartellaClinicaDao.getCartelle(chiave); // Metodo che restituisce le cartelle
+        List<CartellaClinica> cartelle = cartellaClinicaDao.getCartelle(chiave);// Metodo che restituisce le cartelle
+        UtenteDAO utenteDAO = new UtenteDAO();
+        Utente utente = utenteDAO.getUtente(chiave);
+        professione = utente.getProfessione();
+        if (professione.equals("Paramedico")){
+            creaCartella.setDisable(true);
+        }
+
 
         // Pulisce il contenitore prima di caricare nuovi dati
         cartelleContainer.getChildren().clear();
@@ -236,6 +242,7 @@ public class HomePageController {
                     FXMLLoader loader=new FXMLLoader(getClass().getResource("/Scene/VisualizzaCartellaClinica.fxml"));
                     root = loader.load();
                     VisualizzaCartellaClinicaController controller = loader.getController();
+                    controller.setProfessione(professione);
                     controller.caricaCartella(cartella.getID(),chiave);
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root, screenWidth, screenHeight);
