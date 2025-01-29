@@ -39,7 +39,7 @@
    <TextArea fx:id="note" layoutX="350.0" layoutY="440.0" prefHeight="200.0" prefWidth="860.0" promptText="Note..." styleClass="campiInput" wrapText="true" />
 
    <Button layoutX="150.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchHomePage" prefWidth="150.0" styleClass="backButton" text="Indietro" />
-   <Button layoutX="1240.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchSintomiEMalattie" prefHeight="50.0" prefWidth="150.0" styleClass="malattieButton" text="Avanti" />
+   <Button fx:id="avanti" layoutX="1240.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchSintomiEMalattie" prefHeight="50.0" prefWidth="150.0" styleClass="malattieButton" text="Avanti" />
 
    <Pane disable="true" layoutX="300.0" layoutY="30.0" prefHeight="650.0" prefWidth="940.0" styleClass="borderPane" />
 

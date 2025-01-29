@@ -4,52 +4,38 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class JDBC {
-
-    // Dati di connessione al database
     private static final String DB_URL = "jdbc:mysql://26.160.98.76:3306/CorVitaDatabase";
     private static final String DB_USER = "jk";
     private static final String DB_PASSWORD = "pippo";
+
+    // Unica istanza della connessione
     private static Connection connection;
 
-    public static void connect() {
-         connection = null;
+    private JDBC() {
+        // Costruttore privato per evitare istanze multiple
+    }
 
-        try {
-            // Connessione al database
-            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            System.out.println("Connessione al database stabilita con successo!");
-
-        } catch (SQLException e) {
-            System.err.println("Errore di connessione al database: " + e.getMessage());
+    public static Connection getConnection() {
+        if (connection == null) {
+            try {
+                connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+                System.out.println("Connessione al database stabilita con successo!");
+            } catch (SQLException e) {
+                System.err.println("Errore di connessione al database: " + e.getMessage());
+            }
         }
+        return connection;
     }
 
     public static void disconnect() {
-        // Chiudi la connessione
         if (connection != null) {
             try {
                 connection.close();
+                connection = null; // Reset per poter riaprire in futuro
                 System.out.println("Connessione chiusa.");
             } catch (SQLException e) {
                 System.err.println("Errore durante la chiusura della connessione: " + e.getMessage());
             }
         }
-
-    }
-
-    public static Connection getConnection() {
-        return connection;
-    }
-
-    public static String getDbPassword() {
-        return DB_PASSWORD;
-    }
-
-    public static String getDbUrl() {
-        return DB_URL;
-    }
-
-    public static String getDbUser() {
-        return DB_USER;
     }
 }

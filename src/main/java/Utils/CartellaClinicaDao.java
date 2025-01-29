@@ -230,5 +230,30 @@ public class CartellaClinicaDao {
         }
         return cartellaCliniche;
     }
+    public CartellaClinica getUltimaCartella() throws SQLException {
+        CartellaClinica ultimaCartella = null;
+        String query = "SELECT * FROM CartellaClinica " +
+                "ORDER BY Data_creazione DESC LIMIT 1";  // Ordina per data di creazione decrescente e prendi la prima
+
+        try (PreparedStatement preparedStatement = JDBC.getConnection().prepareStatement(query)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    ultimaCartella = new CartellaClinica();
+                    ultimaCartella.setCF(resultSet.getString("CF_Paziente"));
+                    ultimaCartella.setNome(resultSet.getString("Nome_paziente"));
+                    ultimaCartella.setCognome(resultSet.getString("Cognome_paziente"));
+                    ultimaCartella.setTelefone(resultSet.getString("Telefono"));
+                    ultimaCartella.setLetto(resultSet.getInt("numero_letto"));
+                    ultimaCartella.setCF_MedicoCurante(resultSet.getString("CF_Medico_Curante"));
+                    ultimaCartella.setData_modifica(resultSet.getDate("Data_creazione"));
+                    ultimaCartella.setNote(resultSet.getString("Note"));
+                    ultimaCartella.setID(resultSet.getInt("ID_CartellaClinica"));
+                }
+            }
+        }
+        return ultimaCartella;
+    }
+
+
 
 }

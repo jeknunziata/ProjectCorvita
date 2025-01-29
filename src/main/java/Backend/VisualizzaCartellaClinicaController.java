@@ -70,6 +70,8 @@ public class VisualizzaCartellaClinicaController {
     private Button conferma;
     @FXML
     private Button modificaSintomi;
+    @FXML
+    private Text errorText;
 
 
     private void switchScene(ActionEvent event, String fxmlPath) throws IOException {
@@ -194,6 +196,7 @@ public class VisualizzaCartellaClinicaController {
                     inputTelefono.getText().isEmpty() || inputCF.getText().isEmpty() ||
                     inputLetto.getText().isEmpty() || inputCFMedico.getText().isEmpty()) {
                 System.out.println("Tutti i campi devono essere compilati.");
+                errorText.setVisible(true);
                 return;
             }
             // Crea l'oggetto CartellaClinica con i nuovi valori

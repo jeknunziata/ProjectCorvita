@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1536.0" styleClass="backgroundCartella" stylesheets="/VisualizzaCartellaClinica.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Backend.VisualizzaCartellaClinicaController">
@@ -45,9 +46,14 @@
       <TextField fx:id="inputCFMedico" layoutX="830.0" layoutY="25.0" promptText="CF Medico Curante" styleClass="inputCartella" visible="false" />
     </Pane>
 
-    <Button focusTraversable="false" layoutX="910.0" layoutY="720.0" mnemonicParsing="false" onAction="#modificaCampi" styleClass="utilButton" text="Modifica campi" />
+    <Button fx:id="modificaCampi" focusTraversable="false" layoutX="910.0" layoutY="720.0" mnemonicParsing="false" onAction="#modificaCampi" styleClass="utilButton" text="Modifica campi" />
     <Button fx:id="modificaSintomi" layoutX="540.0" layoutY="720.0" mnemonicParsing="false" onAction="#modificaSintomi" styleClass="utilButton" text="Modifica sintomi" />
     <Button fx:id="conferma" focusTraversable="false" layoutX="1270.0" layoutY="720.0" mnemonicParsing="false" onAction="#conferma" styleClass="utilButton" text="Confema" visible="false" />
     <Button layoutX="220.0" layoutY="720.0" mnemonicParsing="false" onAction="#switchHomePage" styleClass="utilButton" text="Indietro" />
+   <Text fx:id="errorText" fill="RED" layoutX="403.0" layoutY="692.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Compilare tutti i campi" visible="false">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Text>
 
 </Pane>
