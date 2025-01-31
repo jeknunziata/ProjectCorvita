@@ -21,7 +21,7 @@ public class MainPage extends Application {
         Connection connection = JDBC.getConnection();
 
         if (connection == null) {
-            showErrorDialog("Impossibile connettersi al database!", "Errore di connessione", "Si è verificato un problema durante il tentativo di connessione al database.");
+            showErrorDialog("Impossibile accedere al database!", "Errore di connessione", "Si è verificato un problema durante il tentativo di connessione al database.");
             return; // Evita di continuare se la connessione fallisce
         }
 
@@ -53,6 +53,7 @@ public class MainPage extends Application {
         launch(args);
     }
 
+    //finestra per la conferma della chiusura dell'applicazione
     public void logout(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");
