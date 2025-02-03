@@ -36,13 +36,6 @@ public class VisualizaCartellaClinicaControllerTest extends ApplicationTest {
         stage.show();
     }
 
-    @BeforeEach
-    void setUp() {
-
-
-
-    }
-
     @Test
     void testModificaCampi_withEmptyFields() {
         // Imposta la professione su "Medico" per testare la modifica
