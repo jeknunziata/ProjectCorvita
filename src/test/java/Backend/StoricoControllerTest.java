@@ -20,7 +20,10 @@ public class StoricoControllerTest extends ApplicationTest {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/StoricoPage.fxml"));
         Parent root = loader.load();
+
         controller = loader.getController();
+        controller.setChiave(7);
+
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -34,7 +37,7 @@ public class StoricoControllerTest extends ApplicationTest {
 
         // Verifica i risultati
         assertEquals(2, listView.getItems().size());
-        assertTrue(listView.getItems().contains("Mario Rossi ha modificato la cartella clinica con ID 1 nella data 01/01/2023 10:10:10.000 con nota: Nota 1"));
-        assertTrue(listView.getItems().contains("Luigi Verdi ha modificato la cartella clinica con ID 2 nella data 02/01/2023 11:11:11.000 con nota: Nota 2"));
+        assertTrue(listView.getItems().contains("P12 B12 ha modificato la cartella clinica con ID 24 nella data 22/01/2025 00:00:00.000 con nota: Creazione"));
+        assertTrue(listView.getItems().contains("P12 B12 ha modificato la cartella clinica con ID 2 nella data 22/01/2025 15:20:10.000 con nota: Condivisione"));
     }
 }

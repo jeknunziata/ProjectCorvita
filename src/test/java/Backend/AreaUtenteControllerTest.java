@@ -1,5 +1,7 @@
 package Backend;
 
+import Utils.Utente;
+import Utils.UtenteDAO;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,10 +11,13 @@ import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
-import org.testfx.matcher.control.TextMatchers;
-import static org.testfx.api.FxAssert.verifyThat;
+import java.sql.SQLException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class AreaUtenteControllerTest extends ApplicationTest {
+
+    private AreaUtenteController controller;
 
     private TextField nome, cognome, cf;
     private Button modifica, conferma;
@@ -22,6 +27,13 @@ public class AreaUtenteControllerTest extends ApplicationTest {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scene/AreaUtente.fxml"));
         Parent mainNode = loader.load();
+
+        HomePageController homePageController = new HomePageController();
+        homePageController.setChiave(1);
+
+        controller = loader.getController();
+        controller.setUtente(1);
+
         stage.setScene(new Scene(mainNode));
         stage.show();
     }
@@ -38,7 +50,10 @@ public class AreaUtenteControllerTest extends ApplicationTest {
     }
 
     @Test
-    public void testModificaDatiUtente() {
+    public void testModificaDatiUtente() throws SQLException {
+
+        Utente utente;
+        UtenteDAO utenteDAO = new UtenteDAO();
 
         // Simula il click sul pulsante per modificare i dati
         clickOn(modifica);
@@ -46,13 +61,15 @@ public class AreaUtenteControllerTest extends ApplicationTest {
         // Inserisci nuovi dati nei campi di testo
         clickOn(nome).write("Carlo");
         clickOn(cognome).write("Magno");
-        clickOn(cf).write("CarloCF1234567890");
+        clickOn(cf).write("CarloCF123456789");
 
         clickOn(conferma);
 
+        utente = utenteDAO.getUtente(1);
+
         // Verifica che i dati siano stati aggiornati correttamente
-        verifyThat("#nome", TextMatchers.hasText("Carlo"));
-        verifyThat("#cognome", TextMatchers.hasText("Magno"));
-        verifyThat("#cf", TextMatchers.hasText("CarloCF1234567890"));
+        assertEquals("Carlo", utente.getNome());
+        assertEquals("Magno", utente.getCognome());
+        assertEquals("CarloCF123456789", utente.getCF());
     }
 }
